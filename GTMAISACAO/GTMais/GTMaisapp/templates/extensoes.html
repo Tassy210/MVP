@@ -1,11 +1,23 @@
+{% extends "menu.html" %}
+{% load static %}
+{% load livereload_tags %}
+{% livereload_script %}
+{% load icons %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Ações de Extensão</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icones@1.0.0/dist/icones.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/icones@1.0.0/dist/icones.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <style>
+  
     input{
         width: 90%;
         font-size: 20px;
@@ -33,18 +45,23 @@
         padding: 10px;
         font-size: 18px;
     }
-    form{    display: inline-block;
-        justify-content: center;
+    form{    
+        background-color:white;
+        display: inline-block;
         text-align: center;
-        width:90%;
+        width:80%;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
     }
    
 
 
 </style>
 <body>
-    <h1>Lista de Ações de Extensão</h1>
-    
+   
+    <div style="   margin: 0 auto;
+        display: grid;
+        place-items: center;">
+        <h1>Portifólio de Ações de Extensão</h1>
     <form method="get" action="{% url 'extensoes' %}">
         <div >
             <input type="text" name="search" placeholder="Pesquisar" value="{{ search_term }}">
@@ -86,7 +103,7 @@
             </select>
 
             <select name="order_direction" id="order_direction">
-                <option value="asc" {% if order_direction == 'asc' %}selected{% endif %}>Recentes</option>
+                <option value="asc" {% if order_direction == 'asc' %}selected{% endif %}><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm14 226c0 7.7-6.3 14-14 14h-96c-7.7 0-14-6.3-14-14s6.3-14 14-14h82V128c0-7.7 6.3-14 14-14s14 6.3 14 14v146z" fill="currentColor"></path></svg>Recentes</option>
                 <option value="desc" {% if order_direction == 'desc' %}selected{% endif %}>Antigos</option>
             </select>
         </div>
@@ -148,5 +165,8 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
 </body>
 </html>
+
+{% endblock %}
