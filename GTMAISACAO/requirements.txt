@@ -1,1 +1,4 @@
-pip install django-extensions 
+django
+django-extensions
+django-livereload
+django-icons
