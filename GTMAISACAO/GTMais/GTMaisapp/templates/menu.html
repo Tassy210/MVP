@@ -1,0 +1,41 @@
+{% load static %}
+{% load livereload_tags %}
+{% livereload_script %}
+{% load icons %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GT-MaisAção{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icones@1.0.0/dist/icones.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/icones@1.0.0/dist/icones.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="/" class="logo" style="font-size:15px; text-align:center"><img style="height:50px;width:50px;" src="{% static 'img/gtmais.png' %}" alt="logo"> GT MaisAção</a>
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <span class="menu-icon"></span>
+                <span class="menu-icon"></span>
+                <span class="menu-icon"></span>
+            </button>
+            <ul class="nav-links">    
+                <li><a href="/sobre">Sobre</a></li>
+                <li><a href="/servicos">Serviços</a></li>
+                <li><a href="/contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}
+         {% endblock %}
+    </main>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

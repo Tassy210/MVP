@@ -1,0 +1,28 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+
+
+.container {
+    width: 90%;
+    height: 600px;
+    display: flex;
+    overflow: hidden;
+    justify-content: center; 
+    align-items: center;
+    padding-left:5%;
+    padding-right:5%;
+}
+.box {
+    width: 50%; 
+    float: left; 
+}
+.back{
+    
+    background-color: #1F2B5B;
+    height: 600px;
+    text-align: center;
+}

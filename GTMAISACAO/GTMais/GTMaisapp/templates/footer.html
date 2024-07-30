@@ -1,0 +1,32 @@
+{% load static %}
+{% load livereload_tags %}
+{% livereload_script %}
+{% load icons %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GT-MaisAção{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icones@1.0.0/dist/icones.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/icones@1.0.0/dist/icones.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+     <div class="footer container">
+        <div class="box">
+        <img style="height:50px;width:50px;" src="{% static 'img/gtmais.png' %}" alt="logo">
+    </div>
+    <div class="box">
+        <p style="color:white">R. Sete de Setembro, s/n, Frederico Westphalen, RS, 98400-000, Bloquinho de Apoio 6, Sala 85.</p>
+    </div>
+    <div class="box" style="text-align:end;">
+        <p style=" color:white">@gtmaisacao</p>
+        <p style="color:white">gtmaisacao@gmail.com</p>
+    </div>
+    </div>
+</body>
+</html>
