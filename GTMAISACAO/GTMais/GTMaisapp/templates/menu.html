@@ -17,12 +17,8 @@
 <body>
     <header>
         <nav class="navbar">
-            <a href="/" class="logo" style="font-size:15px; text-align:center">
-            <img style="height:50px;width:50px;" src="{% static 'img/gtmais.png' %}" alt="logo">
-            </a> 
-             
-            <a style="color:white; text-decoration:none;" href="/"> GT MaisAção</a>
-    
+            <a href="/" class="logo" style="font-size:15px; text-align:center"><img style="height:50px;width:50px;" src="{% static 'img/gtmais.png' %}" alt="logo"></a>
+            <a href="/">GT MaisAção</a>    
             <button class="menu-toggle" aria-label="Abrir menu">
                 <span class="menu-icon"></span>
                 <span class="menu-icon"></span>
@@ -39,8 +35,9 @@
     <main>
         {% block content %}
          {% endblock %}
-    </main>
+    </main><br><br><br><br><br><br>
 
+    {% include 'footer.html' %}
     <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
