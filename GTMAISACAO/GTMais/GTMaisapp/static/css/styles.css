@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
+
 .container {
     width: 90%;
     display: flex;
@@ -52,7 +53,10 @@ header {
     color: white;
     position: relative;
 }
-
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
 .logo {
     color: white;
     text-decoration: none;
