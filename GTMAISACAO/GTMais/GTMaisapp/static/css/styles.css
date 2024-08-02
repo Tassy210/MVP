@@ -1,6 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    margin: 0;
+    font-size: 22px;
 }
 
 .container {
@@ -17,6 +19,8 @@ body {
 .box {
     width: 50%; 
     float: left; 
+}.boxblue{
+    padding: 5% 5%;
 }
 .box img{
     max-width: 100%;
@@ -152,7 +156,11 @@ button{
     font-size: 18px;
     margin-top:5%;
 }
-form{    
+.center{
+    justify-content: center;
+        text-align:center;
+}
+.formfiltro{    
     padding:2%;
     background-color:white;
     display: inline-block;
@@ -161,18 +169,51 @@ form{
     max-width: 1000px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
+.image-container {
+    position: relative;
+    display: inline-block; 
+}
 
+.image-container img {
+    display: block; 
+    width: 100%;
+    height: auto; 
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    font-size: 24px; 
+    text-align: center; 
+    padding: 10px;
+}
+.float-img{
+    float: right;
+    margin: 0 15px 15px 0;
+    width: 700px; 
+    height: auto; 
+}
 .containerproject {
     position: relative;
     width: 100%; 
     max-width: 1000px;
 }
 
+
 .containerproject img {
     width: 100%; 
     height: auto;
 }
-
+.containerblue{
+    background-color: #1F2B5B;
+}
+.containerblue p{
+    color: white;
+    font-size:20px;
+}
 .containerproject .text {
     position: absolute;
     bottom: 0;
@@ -227,4 +268,9 @@ form{
     .menu-toggle {
         display: block;
     }
+
+.none{
+    display: none;
+}
+
 }

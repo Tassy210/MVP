@@ -20,6 +20,7 @@ class TipoAcao(models.Model):
 class AcaoExtensao(models.Model):
     idAcao = models.AutoField(primary_key=True)
     TituloAcao = models.CharField(max_length=255)
+    descricao = models.CharField(max_length=500)
     coordenadorAcao = models.CharField(max_length=255)
     alunoAcao = models.CharField(max_length=255)
     idTipo = models.ForeignKey(TipoAcao, on_delete=models.CASCADE)

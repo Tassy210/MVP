@@ -1,0 +1,60 @@
+{% extends "menu.html" %}
+{% load static %}
+{% load livereload_tags %}
+{% livereload_script %}
+{% load icons %}
+
+{% block content %}
+{% for acao in acoes %}
+<div class="image-container ">
+    <img src="{% static 'img/projeto1.png' %}" width="100%"  alt="Mapa">
+    <div class="text-overlay">{{ acao.TituloAcao }}    
+        <p> Coordenadores:{{acao.coordenadorAcao}}</p>
+    </div> 
+</div>
+<div style="padding:0 200px;">
+    <div>
+        <img src="{% static 'img/projeto1.png' %}" class="float-img" alt="Mapa"/>
+    
+        <h2>O que fazemos?</h2><br> 
+        <p>{{ acao.descricao }}</p> 
+        <p>Realizamos regularmente oficinas e palestras educativas focadas em temas fundamentais para a sustentabilidade ambiental, tais como reciclagem, conservação de recursos naturais e adoção de energias renováveis. Nossas atividades visam não apenas informar, mas também conscientizar e engajar a comunidade em práticas que promovem um futuro mais sustentável e responsável com o meio ambiente.</p>           
+        <p>Realizamos regularmente oficinas e palestras educativas focadas em temas fundamentais para a sustentabilidade ambiental, tais como reciclagem, conservação de recursos naturais e adoção de energias renováveis. Nossas atividades visam não apenas informar, mas também conscientizar e engajar a comunidade em práticas que promovem um futuro mais sustentável e responsável com o meio ambiente.</p>           
+        <p>Realizamos regularmente oficinas e palestras educativas focadas em temas fundamentais para a sustentabilidade ambiental, tais como reciclagem, conservação de recursos naturais e adoção de energias renováveis. Nossas atividades visam não apenas informar, mas também conscientizar e engajar a comunidade em práticas que promovem um futuro mais sustentável e responsável com o meio ambiente.</p>           
+        <p>Realizamos regularmente oficinas e palestras educativas focadas em temas fundamentais para a sustentabilidade ambiental, tais como reciclagem, conservação de recursos naturais e adoção de energias renováveis. Nossas atividades visam não apenas informar, mas também conscientizar e engajar a comunidade em práticas que promovem um futuro mais sustentável e responsável com o meio ambiente.</p>           
+        <p>Realizamos regularmente oficinas e palestras educativas focadas em temas fundamentais para a sustentabilidade ambiental, tais como reciclagem, conservação de recursos naturais e adoção de energias renováveis. Nossas atividades visam não apenas informar, mas também conscientizar e engajar a comunidade em práticas que promovem um futuro mais sustentável e responsável com o meio ambiente.</p>           
+    </div>
+</div>
+<div style="padding:0 200px;">
+    <h3><b>Como fazer parte do projeto?</b></h3>
+    <p>Entre em contato conosco através do seguinte e-mail:{{acao.coordenadorAcao}}</p>
+    <h3> Participantes:</h3>
+    
+    <p> Coordenadores:{{acao.coordenadorAcao}}</p>
+    <p>  Alunos: {{acao.alunoAcao}}</p>
+</div>
+
+<div class="footer ">
+  
+    <div class="center"><br><br>
+        <h3 style="color:white;">PARCEIROS DO PROJETO</h3><br>
+    </div>
+    <div class="container">
+    <div class="box">
+        <img src="{% static 'img/ematerlogo.png' %}" alt="Mapa">
+    </div>
+    <div class="box">
+        <img src="{% static 'img/ufsmlogo.png' %}" alt="Mapa">
+    </div>
+    <div class="box">
+        <img src="{% static 'img/saneparlogo.png' %}" alt="Mapa">
+    </div>
+</div>
+</div>
+
+{% empty %}
+<tr>
+    <td colspan="11">Nenhuma ação encontrada.</td>
+</tr>
+{% endfor %}
+{% endblock %}

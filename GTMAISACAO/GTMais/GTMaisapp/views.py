@@ -12,6 +12,23 @@ def menu(request):
 def footer(request):
     return render(request, 'footer.html')
 
+def sobre(request):
+    return render(request, 'sobre.html')
+
+def contato(request):
+    return render(request, 'contato.html')
+
+def projeto(request):
+    tipos = TipoAcao.objects.all()
+    situacoes = SituacaoAcao.objects.all()
+    acoes = AcaoExtensao.objects.all()
+    
+    return render(request, 'projeto.html',{
+    'acoes': acoes,
+    'tipos': tipos,
+    'situacoes': situacoes,
+    })
+ 
 def extensoes(request):
     search_term = request.GET.get('search', '')
     search_situacao = request.GET.get('situacao', '')
@@ -36,13 +53,13 @@ def extensoes(request):
             data_inicio = datetime.strptime(data_inicio, '%Y-%m-%d').date()
             filtros &= Q(dtInicio__gte=data_inicio)
         except ValueError:
-            pass  # Se a data não for válida, não adicione o filtro
+            pass 
     if data_fim:
         try:
             data_fim = datetime.strptime(data_fim, '%Y-%m-%d').date()
             filtros &= Q(dtFim__lte=data_fim)
         except ValueError:
-            pass  # Se a data não for válida, não adicione o filtro
+            pass  
 
     acoes = AcaoExtensao.objects.filter(
         filtros &

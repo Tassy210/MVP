@@ -1,0 +1,52 @@
+{% extends "menu.html" %}
+{% load static %}
+{% load livereload_tags %}
+{% livereload_script %}
+{% load icons %}
+
+{% block content %}
+    <div class="containerblue">
+      
+        <p style="font-size:25px; text-align:center; padding-top:5%">Sobre</p>
+        <div class="container">
+            <div class="boxblue" >      
+                 
+                <p style="font-size:25px;"> O Que é o Mais Ação?</p>
+             
+                <p>O GT-MaisAção é um projeto de Pesquisa e Desenvolvimento selecionado pela Rede Nacional de Pesquisa e Ensino (RNP) e executado pela Universidade Federal de Santa Maria (UFSM) juntamente com a startup Performance Vegetal (PV). 
+    
+                </p>
+      
+       
+     
+            <p style="font-size:25px;">Projeto de Lei</p>
+           
+                <p>O GT-MaisAção é um projeto de Pesquisa e Desenvolvimento selecionado pela Rede Nacional de Pesquisa e Ensino (RNP) e executado pela Universidade Federal de Santa Maria (UFSM) juntamente com a startup Performance 
+                </p>
+             
+            <p style="font-size:25px;">O que fazemos?</p>
+            
+                <p>    O GT-MaisAção é um projeto de Pesquisa e Desenvolvimento selecionado pela Rede Nacional de Pesquisa e Ensino (RNP) e executado pela Universidade Federal de Santa Maria (UFSM) juntamente com a startup Performance 
+                   
+            </p>
+ 
+        </div>
+    </div>
+    
+</div>
+<p style="font-size:25px; margin-left:3%">Quem somos?</p>
+    <div class="container" style="align-item:center;">
+        <div class="box">
+            <img src="{% static 'img/ricardo.png' %}" alt="ricardo">
+        </div>
+        <div class="box">
+            <img src="{% static 'img/betania.png' %}" alt="betania">
+        </div>
+        <div class="box">
+            <img src="{% static 'img/leon.png' %}" alt="leon">
+        </div>
+        <div class="box">
+            <img src="{% static 'img/marcoSilva.png' %}" alt="marcoSilva">
+        </div>
+    </div>
+{% endblock %}

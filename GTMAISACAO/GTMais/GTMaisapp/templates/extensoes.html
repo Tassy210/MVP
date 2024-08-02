@@ -23,7 +23,7 @@
         display: grid;
         place-items: center;">
         <h1>Portifólio de Ações de Extensão</h1>
-    <form method="get" action="{% url 'extensoes' %}">
+    <form class="formfiltro" method="get" action="{% url 'extensoes' %}">
         <div class="pesquisar">
             <input type="text" name="search" placeholder="Pesquisar" value="{{ search_term }}">
         </div>
@@ -100,6 +100,7 @@
     
    
             {% for acao in acoes %}
+            <a href="/projeto/">
             <div class="containerproject">
             <img src="{% static 'img/projeto1.png' %}" alt="Mapa">
             <div class="text">
@@ -119,6 +120,7 @@
             </tr>-->
         </div>
     </div>
+</a>
             {% empty %}
             <tr>
                 <td colspan="11">Nenhuma ação encontrada.</td>
