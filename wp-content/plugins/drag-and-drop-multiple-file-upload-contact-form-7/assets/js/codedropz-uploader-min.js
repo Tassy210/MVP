@@ -1,446 +1,47 @@
 /**
- * CodeDropz Uploader v1.3.7.7
+ * CodeDropz Uploader
  * Copyright 2018 Glen Mongaya
  * CodeDrop Drag&Drop Uploader
- * @version 1.3.7.7
+ * @version 1.3.8.2
  * @author CodeDropz, Glen Don L. Mongaya
  * @license The MIT License (MIT)
  */
 
 // CodeDropz Drag and Drop Plugin
-(function() {
-
-    const CodeDropz_Uploader = function( settings ){
-
-        // Generate & check nonce
-        const form = document.querySelector('form.wpcf7-form');
-        if( form ) {
-            const data = new FormData();
-            data.append('action', '_wpcf7_check_nonce');
-            data.append('_ajax_nonce', dnd_cf7_uploader.ajax_nonce );
-            fetch(dnd_cf7_uploader.ajax_url, { method: 'POST', body: data })
-            .then(res => res.json())
-            .then(({ data, success }) => success && (dnd_cf7_uploader.ajax_nonce = data))
-            .catch(console.error)
-        }
-
-        // Parent input file type
-        var input = this;
-
-        // Define default options
-        const defaultOptions = {
-            handler: input,
-            color: '#000',
-            background: '',
-            server_max_error: 'Uploaded file exceeds the maximum upload size of your server.',
-            max_file: input.dataset.max ? input.dataset.max : 10, // default 10
-            max_upload_size: input.dataset.limit ? input.dataset.limit : '10485760', // should be a bytes it's (5MB)
-            supported_type: input.dataset.type ? input.dataset.type : 'jpg|jpeg|JPG|png|gif|pdf|doc|docx|ppt|pptx|odt|avi|ogg|m4a|mov|mp3|mp4|mpg|wav|wmv|xls',
-            text: 'Drag & Drop Files Here',
-            separator: 'or',
-            button_text: 'Browse Files',
-            on_success: '',
-        };
-
-        // Merge options with default options
-        const options = Object.assign({}, defaultOptions, settings);
-
-        // Get storage name
-        var dataStorageName = input.dataset.name + '_count_files';
-
-        // File Counter
-        localStorage.setItem( dataStorageName, 1);
-
-        // Template Container
-        const cdropz_template = `
+!function(){let e=function(e){let t=document.querySelector("form.wpcf7-form");if(t){let r=new FormData;r.append("action","_wpcf7_check_nonce"),r.append("_ajax_nonce",dnd_cf7_uploader.ajax_nonce),fetch(dnd_cf7_uploader.ajax_url,{method:"POST",body:r}).then(e=>e.json()).then(({data:e,success:t})=>t&&(dnd_cf7_uploader.ajax_nonce=e)).catch(console.error)}var a=this;let d={handler:a,color:"#000",background:"",server_max_error:"Uploaded file exceeds the maximum upload size of your server.",max_file:a.dataset.max?a.dataset.max:10,max_upload_size:a.dataset.limit?a.dataset.limit:"10485760",supported_type:a.dataset.type?a.dataset.type:"jpg|jpeg|JPG|png|gif|pdf|doc|docx|ppt|pptx|odt|avi|ogg|m4a|mov|mp3|mp4|mpg|wav|wmv|xls",text:"Drag & Drop Files Here",separator:"or",button_text:"Browse Files",on_success:""},o=Object.assign({},d,e);var s=a.dataset.name+"_count_files";localStorage.setItem(s,1);let n=`
             <div class="codedropz-upload-handler">
                 <div class="codedropz-upload-container">
                 <div class="codedropz-upload-inner">
-                    <${dnd_cf7_uploader.drag_n_drop_upload.tag}>${options.text}</${dnd_cf7_uploader.drag_n_drop_upload.tag}>
-                    <span>${options.separator}</span>
-                    <div class="codedropz-btn-wrap"><a class="cd-upload-btn" href="#">${options.button_text}</a></div>
+                    <${dnd_cf7_uploader.drag_n_drop_upload.tag}>${o.text}</${dnd_cf7_uploader.drag_n_drop_upload.tag}>
+                    <span>${o.separator}</span>
+                    <div class="codedropz-btn-wrap"><a class="cd-upload-btn" href="#">${o.button_text}</a></div>
                 </div>
                 </div>
-                <span class="dnd-upload-counter"><span>0</span> ${dnd_cf7_uploader.dnd_text_counter} ${parseInt(options.max_file)}</span>
+                <span class="dnd-upload-counter"><span>0</span> ${dnd_cf7_uploader.dnd_text_counter} ${parseInt(o.max_file)}</span>
             </div>
-        `;
-
-        // Wrap input fields
-        const wrapper = document.createElement('div');
-
-        // Begin to wrap upload fields
-        wrapper.classList.add('codedropz-upload-wrapper');
-        options.handler.parentNode.insertBefore(wrapper, options.handler);
-        wrapper.appendChild(options.handler);
-
-        // Remove special character
-        options.supported_type = options.supported_type.replace(/[^a-zA-Z0-9| ]/g, "");
-
-        // Element Handler
-        const form_handler = options.handler.closest('form');
-        const options_handler = options.handler.closest('.codedropz-upload-wrapper');
-        const btnOBJ = form_handler.querySelector('input[type="submit"], button[type="submit"]');
-
-        // Append Format
-        options.handler.insertAdjacentHTML('afterend', cdropz_template);
-
-        // preventing the unwanted behaviours
-        ['drag', 'dragstart', 'dragend', 'dragover', 'dragenter', 'dragleave', 'drop'].forEach(function(eventName) {
-            options_handler.querySelector('.codedropz-upload-handler').addEventListener(eventName, function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-            });
-        });
-
-        // dragover and dragenter - add class
-        ['dragover', 'dragenter'].forEach(function(eventName) {
-            options_handler.querySelector('.codedropz-upload-handler').addEventListener(eventName, function(e) {
-                options_handler.querySelector('.codedropz-upload-handler').classList.add('codedropz-dragover');
-            });
-        });
-
-        // dragleave dragend drop - remove class
-        ['dragleave', 'dragend', 'drop'].forEach(function(eventName){
-            options_handler.querySelector('.codedropz-upload-handler').addEventListener(eventName, function(e) {
-                options_handler.querySelector('.codedropz-upload-handler').classList.remove('codedropz-dragover');
-            });
-        });
-
-        // Browse button clicked
-        options_handler.querySelector('.cd-upload-btn').addEventListener('click', function(e){
-            // stops the default action of an element from happening
-            e.preventDefault();
-
-            // Reset value
-            options.handler.value = null;
-
-            // Click input type[file] element
-            options.handler.click();
-        });
-
-        // when dropping files
-        options_handler.querySelector('.codedropz-upload-handler').addEventListener('drop', function(event) {
-            // Run the uploader
-            DND_Setup_Uploader(event.dataTransfer.files, 'drop');
-        });
-
-        // Trigger when input type[file] is click/changed
-        options.handler.addEventListener('change', function(e) {
-            // Run the uploader
-            DND_Setup_Uploader(this.files, 'click');
-        });
-
-        // Remove accept attribute on mobile devices
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-            input.removeAttribute('accept');
-        }
-
-        // Setup Uploader
-        var DND_Setup_Uploader = function( files, action ) {
-
-            // make sure we have files
-            if (files.length == 0 ) return;
-
-            // gathering the form data
-            var formData = new FormData();
-
-            // Append file
-            //formData.append('supported_type', options.supported_type ); @note : removed due Vulnerability
-            //formData.append('size_limit', options.max_upload_size );
-            formData.append('action', 'dnd_codedropz_upload' );
-            formData.append('type', action );
-            formData.append('security', dnd_cf7_uploader.ajax_nonce );
-
-            // CF7 - upload field name & cf7 id
-            formData.append('form_id', input.dataset.id);
-            formData.append('upload_name', input.dataset.name);
-
-            // black list file types
-            /*if( input.hasAttribute('data-black-list') ){
-                formData.append('blacklist-types', input.dataset.blackList);
-            }*/
-
-            // remove has error
-            const errorHandler = options.handler.querySelector('.has-error');
-            if (errorHandler) {
-                errorHandler.remove();
-            }
-
-            // Loop files
-            for (const file of files) {
-
-                // Reset upload file type
-                if( typeof formData.delete !== 'undefined' ) {
-                    formData.delete('upload-file');
-                }
-
-                // Limit file upload
-                if( Number( localStorage.getItem(dataStorageName) ) > options.max_file ) {
-                    var hasErrorMsg = options_handler.querySelector('span.has-error-msg');
-                    if (!hasErrorMsg) {
-                        var err_msg = dnd_cf7_uploader.drag_n_drop_upload.max_file_limit;
-                        var errorMsgEl = document.createElement('span');
-                        errorMsgEl.className = 'has-error-msg';
-                        errorMsgEl.textContent = err_msg.replace('%count%', options.max_file);
-                        options_handler.appendChild(errorMsgEl);
-                    }
-                    return false;
-                }
-
-
-                // Create progress bar
-                const progressBarID = CodeDropz_Object.createProgressBar( file );
-                var has_error = false;
-
-                // File size limit - validation
-                if (file.size > options.max_upload_size) {
-                    const parentProgressBar = document.getElementById(progressBarID);
-                    const errorSpan = document.createElement('span');
-                    errorSpan.classList.add('has-error');
-                    errorSpan.textContent = dnd_cf7_uploader.drag_n_drop_upload.large_file;
-                    parentProgressBar.querySelector('.dnd-upload-details').appendChild(errorSpan);
-                    has_error = true;
-                }
-
-                // Validate file type
-                regex_type = new RegExp("(.*?)\.("+ options.supported_type +")$");
-                if ( has_error === false && !( regex_type.test( file.name.toLowerCase() ) ) ) {
-                    document.querySelector('#' + progressBarID + ' .dnd-upload-details').insertAdjacentHTML('beforeend', '<span class="has-error">' + dnd_cf7_uploader.drag_n_drop_upload.inavalid_type + '</span>');
-                    has_error = true;
-                }
-
-                // Increment count
-                localStorage.setItem( dataStorageName, ( Number( localStorage.getItem( dataStorageName ) ) + 1 ) );
-
-                // Make sure there's no error
-                if( has_error === false ) {
-
-                    // Append file
-                    formData.append('upload-file', file );
-
-                    // Process ajax upload
-                    var xhr = new XMLHttpRequest();
-
-                    // Get progress bar element
-                    var progressBar = document.getElementById( progressBarID );
-                    var progressElement = progressBar.querySelector('.dnd-progress-bar');
-                    var detailsElement = progressBar.querySelector('.dnd-upload-details');
-                    var submitButton = form_handler.querySelector('input[type="submit"], button[type="submit"]');
-
-                    xhr.open(form_handler.getAttribute('method'), options.ajax_url);
-                    xhr.onreadystatechange = function() {
-                        if (this.readyState === 4) {
-                            if (this.status === 200) {
-                                var response = JSON.parse(this.responseText);
-                                if (response.success) {
-
-                                    // Complete the progress bar
-                                    CodeDropz_Object.setProgressBar(progressBarID, 100);
-
-                                    // Callback on success
-                                    if (typeof options.on_success === "function") {
-                                        options.on_success.call(this, input, progressBarID, response);
-                                    }
-
-                                } else {
-                                    progressElement.remove();
-                                    detailsElement.insertAdjacentHTML('beforeend', '<span class="has-error">'+ response.data +'</span>');
-                                    if( submitButton ){
-                                        submitButton.classList.remove('disabled');
-                                        submitButton.removeAttribute('disabled');
-                                    }
-                                    progressBar.classList.remove('in-progress');
-                                }
-                            } else {
-                                progressElement.remove();
-                                detailsElement.insertAdjacentHTML('beforeend', '<span class="has-error">'+ options.server_max_error +'</span>');
-                                if( submitButton ){
-                                    submitButton.classList.remove('disabled');
-                                    submitButton.removeAttribute('disabled');
-                                }
-                                progressBar.classList.remove('in-progress');
-                            }
-                        }
-                    };
-                    xhr.upload.addEventListener("progress", function(event){
-                        if ( event.lengthComputable ) {
-
-                            var percentComplete = ( event.loaded / event.total );
-                            var percentage = parseInt( percentComplete * 100 );
-
-                            // Make progress on the loading
-                            CodeDropz_Object.setProgressBar( progressBarID, percentage - 1 );
-                        }
-                    }, false);
-
-                    xhr.send(formData);
-
-                }
-            }
-
-        }
-        // End of Uploader function
-
-        // CodeDropz object and functions
-        var CodeDropz_Object = {
-
-            // Create progress bar
-            createProgressBar : function( file ) {
-
-                // Setup progress bar variable
-                var upload_handler = options_handler.querySelector('.codedropz-upload-handler');
-                var generated_ID = 'dnd-file-' + Math.random().toString(36).substr(2, 9);
-
-                // Setup progressbar elements
-                var fileDetails = `
+        `,l=document.createElement("div");l.classList.add("codedropz-upload-wrapper"),o.handler.parentNode.insertBefore(l,o.handler),l.appendChild(o.handler),o.supported_type=o.supported_type.replace(/[^a-zA-Z0-9| ]/g,"");let p=o.handler.closest("form"),i=o.handler.closest(".codedropz-upload-wrapper"),c=p.querySelector('input[type="submit"], button[type="submit"]');o.handler.insertAdjacentHTML("afterend",n),["drag","dragstart","dragend","dragover","dragenter","dragleave","drop"].forEach(function(e){i.querySelector(".codedropz-upload-handler").addEventListener(e,function(e){e.preventDefault(),e.stopPropagation()})}),["dragover","dragenter"].forEach(function(e){i.querySelector(".codedropz-upload-handler").addEventListener(e,function(e){i.querySelector(".codedropz-upload-handler").classList.add("codedropz-dragover")})}),["dragleave","dragend","drop"].forEach(function(e){i.querySelector(".codedropz-upload-handler").addEventListener(e,function(e){i.querySelector(".codedropz-upload-handler").classList.remove("codedropz-dragover")})}),i.querySelector(".cd-upload-btn").addEventListener("click",function(e){e.preventDefault(),o.handler.value=null,o.handler.click()}),i.querySelector(".codedropz-upload-handler").addEventListener("drop",function(e){u(e.dataTransfer.files,"drop")}),o.handler.addEventListener("change",function(e){u(this.files,"click")}),/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)&&a.removeAttribute("accept");var u=function(e,t){if(0==e.length)return;var r=new FormData;r.append("action","dnd_codedropz_upload"),r.append("type",t),r.append("security",dnd_cf7_uploader.ajax_nonce),r.append("form_id",a.dataset.id),r.append("upload_name",a.dataset.name);let d=o.handler.querySelector(".has-error"),n=i.querySelector(".codedropz-upload-handler");for(let l of(d&&d.remove(),e)){if(void 0!==r.delete&&r.delete("upload-file"),Number(localStorage.getItem(s))>o.max_file){if(!i.querySelector("span.has-error-msg")){var c=dnd_cf7_uploader.drag_n_drop_upload.max_file_limit,u=document.createElement("span");u.className="has-error-msg",u.textContent=c.replace("%count%",o.max_file),n.parentNode.insertBefore(u,n.nextSibling)}return!1}let f=m.createProgressBar(l);var g=!1;if(l.size>o.max_upload_size){let v=document.getElementById(f),h=document.createElement("span");h.classList.add("has-error"),h.textContent=dnd_cf7_uploader.drag_n_drop_upload.large_file,v.querySelector(".dnd-upload-details").appendChild(h),g=!0}if(regex_type=RegExp("(.*?).("+o.supported_type+")$"),!1!==g||regex_type.test(l.name.toLowerCase())||(document.querySelector("#"+f+" .dnd-upload-details").insertAdjacentHTML("beforeend",'<span class="has-error">'+dnd_cf7_uploader.drag_n_drop_upload.inavalid_type+"</span>"),g=!0),localStorage.setItem(s,Number(localStorage.getItem(s))+1),!1===g){r.append("upload-file",l);var y=new XMLHttpRequest,x=document.getElementById(f),b=x.querySelector(".dnd-progress-bar"),S=x.querySelector(".dnd-upload-details"),$=p.querySelector('input[type="submit"], button[type="submit"]');y.open(p.getAttribute("method"),o.ajax_url),y.onreadystatechange=function(){if(4===this.readyState){if(200===this.status){var e=JSON.parse(this.responseText);e.success?(m.setProgressBar(f,100),"function"==typeof o.on_success&&o.on_success.call(this,a,f,e)):(b.remove(),S.insertAdjacentHTML("beforeend",'<span class="has-error">'+e.data+"</span>"),$&&($.classList.remove("disabled"),$.removeAttribute("disabled")),x.classList.remove("in-progress"))}else b.remove(),S.insertAdjacentHTML("beforeend",'<span class="has-error">'+o.server_max_error+"</span>"),$&&($.classList.remove("disabled"),$.removeAttribute("disabled")),x.classList.remove("in-progress")}},y.upload.addEventListener("progress",function(e){if(e.lengthComputable){var t=parseInt(100*(e.loaded/e.total));m.setProgressBar(f,t-1)}},!1),y.send(r)}}},m={createProgressBar:function(e){var t=i.querySelector(".codedropz-upload-handler"),r="dnd-file-"+Math.random().toString(36).substr(2,9),a=`
                     <div class="dnd-upload-image">
                         <span class="file"></span>
                     </div>
                     <div class="dnd-upload-details">
-                        <span class="name"><span>${file.name}</span><em>(${CodeDropz_Object.bytesToSize(file.size)})</em></span>
-                        <a href="#" title="${dnd_cf7_uploader.drag_n_drop_upload.delete.title}" class="remove-file" data-storage="${dataStorageName}">
+                        <span class="name"><span>${e.name}</span><em>(${m.bytesToSize(e.size)})</em></span>
+                        <a href="#" title="${dnd_cf7_uploader.drag_n_drop_upload.delete.title}" class="remove-file" data-storage="${s}">
                         <span class="dnd-icon-remove"></span>
                         </a>
                         <span class="dnd-progress-bar"><span></span></span>
                     </div>
-                `;
-
-                // Create new element and insert after upload_handler
-                var statusElement = document.createElement('div');
-                statusElement.id = generated_ID;
-                statusElement.className = 'dnd-upload-status';
-                statusElement.innerHTML = fileDetails;
-                upload_handler.parentNode.insertBefore(statusElement, upload_handler.nextSibling);
-
-                return generated_ID;
-
-            },
-
-            // Process progressbar ( Animate progress )
-            setProgressBar : function( progressBarID, percent ) {
-
-                const progressBar = document.getElementById( progressBarID );
-                const statusBar = progressBar.querySelector('.dnd-progress-bar');
-
-                //console.log(statusbar);
-                if (statusBar) {
-
-                    // Disable submit button
-                    if( btnOBJ ){
-                        CodeDropz_Object.disableBtn(btnOBJ);
-                    }
-
-                    // Compute Progress bar
-                    let progress_width = percent * statusBar.offsetWidth / 100;
-
-                    // Set status bar in-progress
-                    progressBar.classList.add('in-progress');
-
-                    if (percent == 100) {
-                        statusBar.querySelector('span').style.width = '100%';
-                        statusBar.querySelector('span').textContent = `${percent}% `;
-                    } else {
-                        statusBar.querySelector('span').style.width = progress_width + 'px';
-                        statusBar.querySelector('span').textContent = `${percent}% `;
-                    }
-
-                    if (percent == 100) {
-                        progressBar.classList.add('complete');
-                        progressBar.classList.remove('in-progress');
-                    }
-                }
-                return false;
-
-            },
-
-            // Size Conversion
-            bytesToSize : function( bytes ) {
-
-                if( bytes === 0 )
-                    return '0';
-
-                kBytes = (bytes / 1024);
-                fileSize = ( kBytes >= 1024 ? ( kBytes / 1024 ).toFixed(2) + 'MB' : kBytes.toFixed(2) + 'KB' );
-
-                return fileSize;
-            },
-
-            // Disable button
-            disableBtn : function( BtnOJB ) {
-                if( BtnOJB  ) {
-                    BtnOJB.classList.add('disable');
-                    BtnOJB.disabled = true;
-                }
-            }
-        };
-
-	} // end fn.function
-
-    // Remove File
-    document.addEventListener("click", function(e) {
-        if( !e.target.classList.contains("dnd-icon-remove") ) return;
-
-		e.preventDefault();
-        var _self = e.target,
-            _dnd_status = _self.closest(".dnd-upload-status"),
-            _parent_wrap = _self.closest(".codedropz-upload-wrapper"),
-            removeStorageData = _self.parentElement.getAttribute("data-storage"),
-            storageCount = Number(localStorage.getItem(removeStorageData));
-
-        // Direct remove the file if there's any error.
-        if (_dnd_status.classList.contains("in-progress") || _dnd_status.querySelector(".has-error")) {
-            _dnd_status.remove();
-            localStorage.setItem(removeStorageData, storageCount - 1);
-            return false;
-        }
-
-        // Change text Status
-        _self.classList.add("deleting");
-        _self.textContent = dnd_cf7_uploader.drag_n_drop_upload.delete.text + "...";
-
-        // Request ajax image delete
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", dnd_cf7_uploader.ajax_url);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onload = function() {
-            if (this.status === 200) {
-                var response = JSON.parse(this.responseText);
-                if (response.success) {
-
-                    // Reduce file count and status bar element.
-                    _dnd_status.remove();
-                    localStorage.setItem(removeStorageData, storageCount - 1);
-
-                    // Remove error msg
-                    if ( _parent_wrap.querySelectorAll(".dnd-upload-status").length <= 1 ){
-                        if( _parent_wrap.querySelector(".has-error-msg") ){
-                            _parent_wrap.querySelector(".has-error-msg").remove();
-                        }
-                    }
-
-                    // Update Counter
-                    _parent_wrap.querySelector(".dnd-upload-counter span").textContent = Number(localStorage.getItem(removeStorageData)) - 1;
-                }
-            }
-        };
-
-        xhr.send(
-            "path=" + _dnd_status.querySelector('input[type="hidden"]').value +
-            "&action=dnd_codedropz_upload_delete" +
-            "&security=" + dnd_cf7_uploader.ajax_nonce
-        );
-
-        document.querySelectorAll(".has-error-msg").forEach(function(el) {
-            el.remove();
-        });
-
-    });
-
-    // Attach CodeDropz_Uploader to HTMLElement prototype
-    HTMLElement.prototype.CodeDropz_Uploader = CodeDropz_Uploader;
-
-})();
+                `,d=document.createElement("div");return d.id=r,d.className="dnd-upload-status",d.innerHTML=a,t.parentNode.insertBefore(d,t.nextSibling),r},setProgressBar:function(e,t){let r=document.getElementById(e),a=r.querySelector(".dnd-progress-bar");if(a){c&&m.disableBtn(c);let d=t*a.offsetWidth/100;r.classList.add("in-progress"),100==t?(a.querySelector("span").style.width="100%",a.querySelector("span").textContent=`${t}% `):(a.querySelector("span").style.width=d+"px",a.querySelector("span").textContent=`${t}% `),100==t&&(r.classList.add("complete"),r.classList.remove("in-progress"))}return!1},bytesToSize:function(e){return 0===e?"0":fileSize=(kBytes=e/1024)>=1024?(kBytes/1024).toFixed(2)+"MB":kBytes.toFixed(2)+"KB"},disableBtn:function(e){e&&(e.classList.add("disable"),e.disabled=!0)}}};document.addEventListener("click",function(e){if(e.target.classList.contains("dnd-icon-remove")){e.preventDefault();var t=e.target,r=t.closest(".dnd-upload-status"),a=t.closest(".codedropz-upload-wrapper"),d=t.parentElement.getAttribute("data-storage"),o=Number(localStorage.getItem(d));if(r.classList.contains("in-progress")||r.querySelector(".has-error"))return r.remove(),localStorage.setItem(d,o-1),!1;t.classList.add("deleting"),t.textContent=dnd_cf7_uploader.drag_n_drop_upload.delete.text+"...";var s=new XMLHttpRequest;s.open("POST",dnd_cf7_uploader.ajax_url),s.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),s.onload=function(){200===this.status&&JSON.parse(this.responseText).success&&(r.remove(),localStorage.setItem(d,o-1),a.querySelectorAll(".dnd-upload-status").length<=1&&a.querySelector(".has-error-msg")&&a.querySelector(".has-error-msg").remove(),a.querySelector(".dnd-upload-counter span").textContent=Number(localStorage.getItem(d))-1)},s.send("path="+r.querySelector('input[type="hidden"]').value+"&action=dnd_codedropz_upload_delete&security="+dnd_cf7_uploader.ajax_nonce),document.querySelectorAll(".has-error-msg").forEach(function(e){e.remove()})}}),HTMLElement.prototype.CodeDropz_Uploader=e}();
 // END: CodeDropz Uploader function
+
+// Custom JS hook event
+var dnd_upload_cf7_event = function(target, name, data) {
+	// Create a custom event with the specified name and data
+	var event = new CustomEvent('dnd_upload_cf7_' + name, {
+		bubbles: true,
+		detail: data
+	});
+	target.dispatchEvent(event);
+}
 
 // BEGIN: initialize upload
 document.addEventListener('DOMContentLoaded', function() {
@@ -532,15 +133,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     var filesCounter = ( Number( localStorage.getItem( input.dataset.name + '_count_files' ) ) - 1);
                     var counterElement = input.closest('.codedropz-upload-wrapper').querySelector('.dnd-upload-counter span');
                     counterElement.textContent = filesCounter;
+
+					// Add custom event
+					dnd_upload_cf7_event( progressDetails, 'success', response );
                 }
             });
 
         });
 
-
-
 	}
 
 	window.initDragDrop();
+
+	// Usage: Custom js hook after success upload
+	/*document.addEventListener( 'dnd_upload_cf7_success', function( event ) {
+		console.log(event.detail);
+	});*/
 
 });

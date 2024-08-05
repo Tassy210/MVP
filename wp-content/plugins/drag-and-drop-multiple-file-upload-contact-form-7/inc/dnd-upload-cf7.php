@@ -38,7 +38,7 @@
 	add_action('wpcf7_mail_components','dnd_cf7_mail_components', 50, 2);
 
 	// Auto clean up dir/files
-	add_action('template_redirect', 'dnd_cf7_auto_clean_dir', 20, 0 );
+	add_action('shutdown', 'dnd_cf7_auto_clean_dir', 20, 0 );
 
 	// Add row meta links
 	add_filter( 'plugin_row_meta', 'dnd_custom_plugin_row_meta', 10, 2 );
@@ -115,7 +115,7 @@
 	// Remove uploaded files when item is deleted permanently.
 	function dnd_remove_uploaded_files( $post_id ) {
 		$post_type = get_post_type( $post_id );
-		$page = get_post( $post_id );
+		$page      = get_post( $post_id );
 		if( $post_type == 'flamingo_inbound' ) {
 			preg_match_all( '/(.*?)(\/'.wpcf7_dnd_dir.'\/wpcf7-files\/.*$)/m', $page->post_content, $matches );
 			if( $matches[0] && count( $matches[0] ) > 0 ) {
@@ -141,13 +141,14 @@
         }
 
 		// Scan and get all form tags from cf7 generator
-		$forms_tags = $submission->get_contact_form();
+		$forms_tags  = $submission->get_contact_form();
 		$uploads_dir = dnd_get_upload_dir();
 
 		if( $forms = $forms_tags->scan_form_tags() ) {
 			foreach( $forms as $field ) {
 				$field_name = $field->name;
 				if( $field->basetype == 'mfile' && isset( $posted_data[$field_name] ) && ! empty( $posted_data[$field_name] ) ) {
+					// @todo - check $posted_data if array
 					foreach( $posted_data[$field_name] as $key => $file ) {
 						$posted_data[$field_name][$key] = trailingslashit( $uploads_dir['upload_url'] ) . wp_basename( $file );
 					}
@@ -222,7 +223,7 @@
 
 	// Clean up directory - From Contact Form 7
 	function dnd_cf7_auto_clean_dir( $seconds = 3600, $max = 60 ) {
-		if ( is_admin() || 'GET' != $_SERVER['REQUEST_METHOD'] || is_robots() || is_feed() || is_trackback() ) {
+		if ( is_admin() ) {
 			return;
 		}
 
@@ -258,7 +259,7 @@
 				}
 
 				// Delete files from dir
-				if( $file != '.htaccess' ) {
+				if( $file != '.htaccess' && $file != 'index.php' ) {
 					wp_delete_file( $dir . $file );
 				}
 
@@ -270,7 +271,6 @@
 			}
 			@closedir( $handle );
 		}
-		@rmdir( $dir );
 	}
 
 	// Hooks before sending the email - ( append links to body email )
@@ -936,6 +936,9 @@
 
             // Allow other plugin to hook
             do_action('wpcf7_upload_file_name_custom', $new_file, $filename );
+
+			// Custom filter after upload
+			$files = apply_filters( 'dnd_cf7_after_upload', $files );
 
             // Return json files
 			wp_send_json_success( $files );
