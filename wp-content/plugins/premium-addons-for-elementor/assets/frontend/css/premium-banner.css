@@ -87,10 +87,10 @@
   width: calc(100% + 50px) !important;
   max-width: -webkit-calc(100% + 50px) !important;
   max-width: calc(100% + 50px) !important;
-  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
   -webkit-transform: translate3d(-40px, 0, 0);
   transform: translate3d(-40px, 0, 0);
 }
@@ -130,10 +130,10 @@
 .premium-banner-animation1 .premium-banner-read-more {
   margin-top: 10px;
   opacity: 0;
-  -webkit-transition: opacity 0.2s, -webkit-transform 0.35s;
-  transition: opacity 0.2s, -webkit-transform 0.35s;
-  transition: opacity 0.2s, transform 0.35s;
-  transition: opacity 0.2s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.2s, -webkit-transform 0.35s;
+  transition: opacity 0.2s, -webkit-transform 0.35s;
+  transition: opacity 0.2s, transform 0.35s;
+  transition: opacity 0.2s, transform 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation1:hover .premium-banner-ib-content,
@@ -219,10 +219,10 @@
   top: 50%;
   left: 0;
   width: 100%;
-  -webkit-transition: color 0.35s, -webkit-transform 0.35s;
-  transition: color 0.35s, -webkit-transform 0.35s;
-  transition: transform 0.35s, color 0.35s;
-  transition: transform 0.35s, color 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: color 0.35s, -webkit-transform 0.35s;
+  transition: color 0.35s, -webkit-transform 0.35s;
+  transition: transform 0.35s, color 0.35s;
+  transition: transform 0.35s, color 0.35s, -webkit-transform 0.35s;
   -webkit-transform: translate3d(0, -50%, 0);
   transform: translate3d(0, -50%, 0);
 }
@@ -230,10 +230,10 @@
 .premium-banner-animation2 .premium-banner-ib-content,
 .premium-banner-animation2 .premium-banner-read-more,
 .premium-banner-animation2 .premium-banner-ib-desc::before {
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation2 .premium-banner-ib-content,
@@ -386,24 +386,24 @@
 
 .premium-banner-animation4 .premium-banner-ib-content,
 .premium-banner-animation4 .premium-banner-read-more {
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation4 .premium-banner-ib-desc::after, .premium-banner-animation4 .premium-banner-ib-desc::before {
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation4 img {
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation4:hover .premium-banner-ib-desc::after,
@@ -504,19 +504,19 @@
 }
 
 .premium-banner-animation5 img {
-  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation2 img,
 .premium-banner-animation4 img,
 .premium-banner-animation6 img {
-  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation5.zoomout img,
@@ -610,10 +610,10 @@
 .premium-banner-animation6 .premium-banner-read-more,
 .premium-banner-animation6 .premium-banner-ib-desc::before {
   opacity: 0;
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0);
@@ -675,10 +675,10 @@
   bottom: 60px;
   left: 60px;
   opacity: 0;
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
   -webkit-transform: translate3d(0, -100px, 0);
   transform: translate3d(0, -100px, 0);
 }
@@ -695,10 +695,10 @@
   width: calc(100% + 20px) !important;
   max-width: -webkit-calc(100% + 20px) !important;
   max-width: calc(100% + 20px) !important;
-  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
   -webkit-transform: translate3d(-10px, 0, 0);
   transform: translate3d(-10px, 0, 0);
   -webkit-backface-visibility: hidden;
@@ -822,10 +822,10 @@
 .premium-banner-animation13 .premium-banner-read-more {
   padding: 15px 0;
   opacity: 0;
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
 }
@@ -860,10 +860,10 @@
   width: calc(100% + 40px) !important;
   max-width: -webkit-calc(100% + 40px) !important;
   max-width: calc(100% + 40px) !important;
-  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation7 .premium-banner-brlr {
@@ -944,20 +944,20 @@
 }
 
 .premium-banner-animation7 .premium-banner-ib-desc::after, .premium-banner-animation7 .premium-banner-ib-desc::before {
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation7 .premium-banner-ib-title,
 .premium-banner-animation7 .premium-banner-ib-content,
 .premium-banner-animation7 .premium-banner-read-more {
   opacity: 0;
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation7:hover .premium-banner-ib-content,
@@ -1004,10 +1004,10 @@
   width: calc(100% + 40px) !important;
   max-width: -webkit-calc(100% + 40px) !important;
   max-width: calc(100% + 40px) !important;
-  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation8 .premium-banner-brlr {
@@ -1096,19 +1096,19 @@
 }
 
 .premium-banner-animation8 .premium-banner-ib-desc::after, .premium-banner-animation8 .premium-banner-ib-desc::before {
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation8 .premium-banner-ib-title,
 .premium-banner-animation8 .premium-banner-ib-content,
 .premium-banner-animation8 .premium-banner-read-more {
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
   opacity: 0;
 }
 
@@ -1156,10 +1156,10 @@
   width: calc(100% + 20px) !important;
   max-width: -webkit-calc(100% + 20px) !important;
   max-width: calc(100% + 20px) !important;
-  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
@@ -1178,10 +1178,10 @@
   height: 1px;
   background: #fff;
   content: "";
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
 }
@@ -1194,10 +1194,10 @@
   height: 1px;
   background: #fff;
   content: "";
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
 }
@@ -1275,10 +1275,10 @@
   width: calc(100% + 20px) !important;
   max-width: -webkit-calc(100% + 20px) !important;
   max-width: calc(100% + 20px) !important;
-  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation10 .premium-banner-ib-title {
@@ -1305,10 +1305,10 @@
   opacity: 0;
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation10:hover .premium-banner-ib-title,
@@ -1334,10 +1334,10 @@
 .premium-banner-animation10 .premium-banner-read-more {
   padding-top: 15px;
   opacity: 0;
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
   -webkit-transform: translate3d(0, 100%, 0);
   transform: translate3d(0, 100%, 0);
 }
@@ -1383,10 +1383,10 @@
 
 .premium-banner-animation11 img {
   width: 100%;
-  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
-  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  -webkit-transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s;
+  transition: opacity 0.35s, filter 0.35s, transform 0.35s, -webkit-filter 0.35s, -webkit-transform 0.35s;
 }
 
 .premium-banner-animation11 .premium-banner-ib-title {

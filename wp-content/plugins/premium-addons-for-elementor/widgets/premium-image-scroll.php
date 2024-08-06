@@ -98,7 +98,7 @@ class Premium_Image_Scroll extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'link', 'cta', 'animation' );
+		return array( 'pa', 'premium', 'premium image scroll', 'link', 'cta', 'animation' );
 	}
 
 	/**
@@ -929,7 +929,7 @@ class Premium_Image_Scroll extends Widget_Base {
 		$image_html = '';
 		if ( ! empty( $settings['image']['url'] ) ) {
 
-            $image_id = apply_filters( 'wpml_object_id', $settings['image']['id'], 'attachment' );
+            $image_id = apply_filters( 'wpml_object_id', $settings['image']['id'], 'attachment', true );
 
             $settings['image']['id'] = $image_id;
 

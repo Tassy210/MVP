@@ -122,7 +122,7 @@ class Premium_Tiktok_Feed extends Widget_Base {
 	 * @return array CSS style handles.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'tiktok', 'feed', 'social', 'video' );
+		return array( 'pa', 'premium', 'premium tiktok feed', 'tiktok', 'feed', 'social', 'video' );
 	}
 
 	/**

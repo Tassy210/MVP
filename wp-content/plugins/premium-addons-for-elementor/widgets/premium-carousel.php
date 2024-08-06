@@ -130,7 +130,7 @@ class Premium_Carousel extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'slider', 'advanced', 'testimonial' );
+		return array( 'pa', 'premium', 'premium carousel', 'slider', 'advanced', 'testimonial' );
 	}
 
 	/**

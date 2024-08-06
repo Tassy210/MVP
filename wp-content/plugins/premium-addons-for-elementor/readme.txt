@@ -3,9 +3,9 @@ Contributors: Leap13, Rimoun
 Tags: elementor, elementor addons, widgets, elementor elements, templates
 Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme
 Requires at least: 5.0
-Tested Up To: 6.6
+Tested Up To: 6.6.1
 Requires PHP: 7.0
-Stable Tag: 4.10.38
+Stable Tag: 4.10.39
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -80,7 +80,7 @@ Each widget and addon has been tested on different screen sizes, mobile devices,
 ## Widgets & Addons Included
 
 ### Content Widgets
-* [**Carousel Widget**](https://premiumaddons.com/carousel-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create a slider of any Elementor content.
+* [**Carousel Widget**](https://premiumaddons.com/elementor-carousel-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create a slider of any Elementor content.
 * [**Blog Widget**](https://premiumaddons.com/blog-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Showcase posts or any custom post type in 5 neat skins.
 
 * [**AJAX Search Widget**](https://premiumaddons.com/elementor-ajax-search-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Add search form to your website with custom search query.
@@ -107,14 +107,14 @@ Each widget and addon has been tested on different screen sizes, mobile devices,
 
 ### Image & Video Widgets
 * [**Site Logo Widget**](https://premiumaddons.com/elementor-site-logo-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create an attractive logo for your brand using an image, SVG shape, or Lottie Animation with tens of customization options.
-* [**Media Gallery Widget**](https://premiumaddons.com/grid-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Highly customizable gallery widget that can be used for creating attractive looking image galleries and portfolios.
+* [**Media Gallery Widget**](https://premiumaddons.com/elementor-grid-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Highly customizable gallery widget that can be used for creating attractive looking image galleries and portfolios.
 * [**Advanced Media Carousel Widget**](https://premiumaddons.com/elementor-advanced-carousel-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create advanced carousel using images, videos or Elementor templates.
 * [**Image Scroll Widget**](https://premiumaddons.com/elementor-image-scroll-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Allows you to represent your images in a brand new yet attractive way.
 * [**Image Comparison Widget**](https://premiumaddons.com/image-comparison-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create vertical or horizontal image comparisons easily using this amazing widget.
-* [**Image Hotspots Widget**](https://premiumaddons.com/image-hotspots-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Image Hotspots Widget with 100% freehand design experience. Add hotspots to your image using mouse drag n' drop.
+* [**Image Hotspots Widget**](https://premiumaddons.com/elementor-image-hotspots-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Image Hotspots Widget with 100% freehand design experience. Add hotspots to your image using mouse drag n' drop.
 * [**Image Layers Widget**](https://premiumaddons.com/image-layers-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Combine images, Lottie animations and texts.
 * [**Image Accordion Widget**](https://premiumaddons.com/elementor-image-accordion-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create eye-catching Image Accordions in both vertical and horizontal orientations.
-* [**Video Box Widget**](https://premiumaddons.com/video-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Bring videos from YouTube, Vimeo, Dailymotion, or upload your own using Video Box Widget. The widget comes with many customization features.
+* [**Video Box Widget**](https://premiumaddons.com/elementor-video-box-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Bring videos from YouTube, Vimeo, Dailymotion, or upload your own using Video Box Widget. The widget comes with many customization features.
 
 ### Section/Column Addons & Widgets
 * [**Horizontal Scroll Widget**](https://premiumaddons.com/elementor-horizontal-scroll-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create horizontal scroll websites with just few clicks.
@@ -128,31 +128,31 @@ Each widget and addon has been tested on different screen sizes, mobile devices,
 * [**Badge Global Addon**](https://premiumaddons.com/elementor-badge-global-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add an icon, image, Lottie animation, or SVG blob shape badge to any section, column, or widget.
 * [**Animated Blob Generator**](https://premiumaddons.com/elementor-animated-blob-generator/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple animated blob layers to your sections with a wide range of smart customization options.
 * [**Lottie Animations Section Addon**](https://premiumaddons.com/elementor-lottie-animations-section-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple Lottie Animations easily to any section with allot of customization and interactivity options.
-* [**Parallax Section/Column Addon**](https://premiumaddons.com/parallax-section-addon-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Parallax Section Addon that can be enabled for columns with freehand design experience and many styles to choose from.
+* [**Parallax Section/Column Addon**](https://premiumaddons.com/elementor-parallax-addon/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The only Parallax Section Addon that can be enabled for columns with freehand design experience and many styles to choose from.
 * [**Particles Section/Column Addon**](https://premiumaddons.com/particles-section-addon-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create eye-catching particles background with many customization options.
 * [**Animated Gradient/Column Addon**](https://premiumaddons.com/animated-section-gradients-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Subtle animated gradients effect that makes your backgrounds attractive.
 * [**Ken Burns Section/Column Addon**](https://premiumaddons.com/ken-burns-section-addon-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Add multiple images to your section or column background and animate them with the popular Ken Burns effect.
 
 ### Off-Grid Widgets
  * [**Modal Box Widget**](https://premiumaddons.com/modal-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: All purpose modal box widget with the ability to use Elementor Templates and many other options.
- * [**Alert Box Widget**](https://premiumaddons.com/alert-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show a popups, GDPR alerts and much more with this handy widget from Premium Addons.
+ * [**Alert Box Widget**](https://premiumaddons.com/elementor-alert-box-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show a popups, GDPR alerts and much more with this handy widget from Premium Addons.
  * [**Off-canvas Widget**](https://premiumaddons.com/elementor-off-canvas-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Another off-canvas widget allows you to slide in a section from any direction with a trigger.
  * [**Preview Window Widget**](https://premiumaddons.com/preview-window-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Very clever way to show more data in less content area.
 
 ### Social Reviews & Testimonials Widgets
 * [**Testimonials Widget**](https://premiumaddons.com/testimonials-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: The modern Testimonials Widget us available with many customization options. It can be used with Carousel Widget to create testimonials carousel.
-* [**Facebook Reviews Widget**](https://premiumaddons.com/facebook-reviews-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: This widget allows you to show off your Facebook Reviews on your website.
-* [**Google Reviews Widget**](https://premiumaddons.com/google-reviews-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show your business's latest Google Reviews right on your webpage.
+* [**Facebook Reviews Widget**](https://premiumaddons.com/elementor-facebook-reviews-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: This widget allows you to show off your Facebook Reviews on your website.
+* [**Google Reviews Widget**](https://premiumaddons.com/elementor-google-reviews-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show your business's latest Google Reviews right on your webpage.
 * [**Yelp Reviews Widget**](https://premiumaddons.com/elementor-yelp-reviews-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*:  Show your business's Yelp Reviews in your website pages with this useful widget.
 
 ### Blurbs & CTA Widgets
 * [**Bullet List Widget**](https://premiumaddons.com/elementor-bullet-list-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create a bullet list with icons, images, and text tags beside Lottie animations.
-* [**Countdown Widget**](https://premiumaddons.com/countdown-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create sense of urgency with this widget. It's perfect for under construction pages, events, sale items, etc.
+* [**Countdown Widget**](https://premiumaddons.com/elementor-countdown-widget-2/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Create sense of urgency with this widget. It's perfect for under construction pages, events, sale items, etc.
 * [**Banner Widget**](https://premiumaddons.com/banner-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Animated and interactive Banner Widget comes with multiple styles and customization features.
 * [**Button Widget**](https://premiumaddons.com/button-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Advanced Button Widget comes with lots of interactive animation, styling options, and onClick event option.
 * [**Image Button Widget**](https://premiumaddons.com/image-button-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Image Button Widget is a unique element that can be used for creative and innovative call to action ideas.
 * [**3D Hover Box Widget**](https://premiumaddons.com/3d-hover-box-flip-box-widget-for-elementor/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Comes with 8 cool 3D interactive effects.
-* [**Icon Box Widget**](https://premiumaddons.com/icon-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: An advanced Icon Box Widgetwith endless customization options.
+* [**Icon Box Widget**](https://premiumaddons.com/elementor-icon-box-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: An advanced Icon Box Widgetwith endless customization options.
 * [**iHover Widget**](https://premiumaddons.com/ihover-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: The popular iHover Widget with various interactive animations and styling options.
 * [**Unfold Widget**](https://premiumaddons.com/unfold-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Advanced way to fit long text in small area. Unfold Widget is a great trick as it will make your layout design look better.
 
@@ -161,14 +161,14 @@ Each widget and addon has been tested on different screen sizes, mobile devices,
 * [**TikTok Feed Widget**](https://premiumaddons.com/elementor-tiktok-feed-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Get feed from your TikTok account and show them on your website. Advanced filtering options, three layouts and three skins.
 * [**Facebook Feed Widget**](https://premiumaddons.com/elementor-facebook-feed-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show your Facebook Feed directly inside your website.
 * [**Twitter Feed Widget**](https://premiumaddons.com/twitter-feed-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Display your Twitter Feed on your website pages.
-* [**Instagram Feed Widget**](https://premiumaddons.com/instagram-feed-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show your Instagram photos right on your webpage.
+* [**Instagram Feed Widget**](https://premiumaddons.com/elementor-instagram-feed-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show your Instagram photos right on your webpage.
 * [**Behance Feed Widget**](https://premiumaddons.com/behance-feed-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Show off your amazing profolio projects using Behance Feed Widget.
 
 ### Tables, Charts & Anything Data Widgets
 * [**Progress Bar Widget**](https://premiumaddons.com/progress-bar-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: The most advanced Progress Bar Widget comes with multiple labels option.
-* [**Pricing Table Widget**](https://premiumaddons.com/pricing-table-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Highly customizable Pricing Table Widget with tons of styling options.
+* [**Pricing Table Widget**](https://premiumaddons.com/elementor-pricing-table-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Highly customizable Pricing Table Widget with tons of styling options.
 * [**Charts Widget**](https://premiumaddons.com/charts-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)  *(PRO)*: The only advanced Charts Widget is available in Premium Addons. Create Line Chart, Bar Chart, Doughnut Chart, Radar Chart, and more.
-* [**Tables Widget**](https://premiumaddons.com/table-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create sophisticated tables with unique styling and interactivity options.
+* [**Tables Widget**](https://premiumaddons.com/elementor-table-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(PRO)*: Create sophisticated tables with unique styling and interactivity options.
 * [**Counter Widget**](https://premiumaddons.com/counter-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) *(FREE)*: Show your facts & figures with Counter Widget.
 
 ### Contact Widgets
@@ -234,6 +234,13 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 14. Premium Progress Bar Widget
 
 == Changelog ==
+
+= 4.10.39 =
+
+- Fixed: Lottie animations not working correctly after v4.10.38
+- Fixed: Stroke color not working correctly in Mobile Menu widget.
+- Fixed: Images not showing in Advanced Carousel widget.
+- Fixed: Some links not working in plugin settings page.
 
 = 4.10.38 =
 
@@ -319,7 +326,7 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 
 = 4.10.25 =
 
-- Tweak: Countdown widget rebuilt - [here](https://premiumaddons.com/countdown-widget-for-elementor-page-builder/).
+- Tweak: Countdown widget rebuilt - [here](https://premiumaddons.com/elementor-countdown-widget-2/).
 - Tweak: Added option to trigger Equal Height addon on page load or scroll.
 - Tweak: Code refactored for better performance and security.
 
@@ -609,7 +616,7 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 
 = 4.9.34 =
 
-- New: Added Background Image option in Videobox widget - [here](https://premiumaddons.com/video-box-widget-for-elementor-page-builder/).
+- New: Added Background Image option in Videobox widget - [here](https://premiumaddons.com/elementor-video-box-widget/).
 - Tweak: Added "aria-hidden" attribute to icons in Blog widget.
 - Fixed: Custom icons converted to SVGs causing them not to appear.
 
@@ -823,7 +830,7 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 = 4.9.1 =
 
 - New: Added Create/Edit Live Templates feature in all widgets that support Elementor Templates - [here](https://premiumaddons.com/elementor-templates-live-editor/).
-- Tweak: Added Dailymotion and Lightbox options in Videobox widget - [here](https://premiumaddons.com/video-box-widget-for-elementor-page-builder/).
+- Tweak: Added Dailymotion and Lightbox options in Videobox widget - [here](https://premiumaddons.com/elementor-video-box-widget/).
 - Tweak: Media Gallery and Blog widgets HTML markup optimized for better performance.
 - Fixed: Carousel widget navigation arrows/dots not working on RTL websites.
 - Fixed: Quickview Popup content is not showing properly for variable products in WooCommerce Products Listing widget.
@@ -1351,7 +1358,7 @@ Tweak: JS code optimized for security improvements.
 - Tweak: Added Custom Navigation option to Carousel widget - [here](https://premiumaddons.com/docs/how-to-use-elementor-widgets-to-navigate-through-carousel-widget-slides/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 - Tweak: Added size units to Arrows size/position options in Carousel widget.
 - Tweak: Added Get Youtube Playlist/Channel videos in Video Box widget - [here](https://premiumaddons.com/docs/how-to-enable-youtube-data-api-for-premium-video-box-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
-- Tweak: Added Sticky option in Video Box widget - [here](https://premiumaddons.com/video-box-widget-for-elementor-page-builder/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
+- Tweak: Added Sticky option in Video Box widget - [here](https://premiumaddons.com/elementor-video-box-widget/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 - Tweak: Added Mask Video Shape option Video Box widget.
 - Tweak: Added Hover Effects to overlay image in Video Box widget.
 - Tweak: Added Autoplay On Viewport option in Video Box widget.

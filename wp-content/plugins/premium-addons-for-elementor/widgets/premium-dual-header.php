@@ -115,7 +115,7 @@ class Premium_Dual_Header extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'advanced', 'title', 'heading', 'multi', 'text' );
+		return array( 'pa', 'premium', 'premium dual heading', 'advanced', 'title', 'heading', 'multi', 'text' );
 	}
 
 	/**

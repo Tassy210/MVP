@@ -81,7 +81,7 @@ class Premium_SVG_Drawer extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'icon', 'animate', 'custom', 'library', 'animation' );
+		return array( 'pa', 'premium', 'premium svg draw', 'icon', 'animate', 'custom', 'library', 'animation' );
 	}
 
 	/**

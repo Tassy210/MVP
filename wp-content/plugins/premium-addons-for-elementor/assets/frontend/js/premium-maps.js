@@ -17,11 +17,13 @@ jQuery(window).on("elementor/frontend/init", function () {
 
             var $closestSection = $scope.closest('.elementor-top-section, .e-con');
 
-            var eleObserver = new IntersectionObserver(function($entry) {
-                if ($entry[0].isIntersecting) {
-                    premiumMap = newMap(mapElement, mapSettings, mapStyle);
-                    eleObserver.unobserve($entry[0].target); // to only excecute the callback func once.
-                }
+            var eleObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        premiumMap = newMap(mapElement, mapSettings, mapStyle);
+                        eleObserver.unobserve(entry.target); // to only excecute the callback func once.
+                    }
+                });
             }, {
                 rootMargin: '70% 0px 0px 0px'
             });

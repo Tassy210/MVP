@@ -114,7 +114,7 @@ class Premium_Countdown extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'counter', 'time', 'event' );
+		return array( 'pa', 'premium', 'premium countdown', 'counter', 'time', 'event' );
 	}
 
 	/**

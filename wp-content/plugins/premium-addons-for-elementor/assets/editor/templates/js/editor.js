@@ -175,8 +175,8 @@
                                 message += "<p>You need to add your Google API key from Dashboard -> Premium Add-ons for Elementor -> Google Maps</p>";
                             } else if (-1 !== this.getOption('notice').indexOf("form")) {
                                 message += "<p>You need to have <a href='https://wordpress.org/plugins/contact-form-7/' target='_blank'>Contact Form 7 plugin</a> installed and active.</p>";
-                            } else if (-1 !== this.getOption('notice').indexOf("container")) {
-                                message += "<p>You need to enable Flexbox Container feature from your WP Dashboard -> Elementor -> Settings -> Features tab.</p>";
+                            } else if (-1 !== this.getOption('notice').indexOf("woocommerce")) {
+                                message += "<p>You need to have WooCommerce plugin installed to use this template.</p>";
                             }
 
                             this.ui.notice.html('<div><p><strong>Important!</strong></p>' + message + '</div>');

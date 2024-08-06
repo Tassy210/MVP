@@ -128,7 +128,7 @@ class Premium_Maps extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'marker', 'pin', 'tooltip', 'location' );
+		return array( 'pa', 'premium', 'premium google maps', 'marker', 'pin', 'tooltip', 'location' );
 	}
 
 	/**

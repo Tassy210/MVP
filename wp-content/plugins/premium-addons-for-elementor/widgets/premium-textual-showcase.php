@@ -156,7 +156,7 @@ class Premium_Textual_Showcase extends Widget_Base {
 	 * @return array CSS style handles.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'textual', 'showcase', 'image' );
+		return array( 'pa', 'premium', 'premium textual showcase', 'textual', 'showcase', 'image' );
 	}
 
 	/**

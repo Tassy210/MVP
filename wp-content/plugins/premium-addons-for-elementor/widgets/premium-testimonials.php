@@ -117,7 +117,7 @@ class Premium_Testimonials extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'quote', 'appreciate', 'rating', 'review', 'recommendation' );
+		return array( 'pa', 'premium', 'premium testimonials', 'quote', 'appreciate', 'rating', 'review', 'recommendation' );
 	}
 
 	/**

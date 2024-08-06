@@ -122,7 +122,7 @@ class Premium_Counter extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'time', 'number' );
+		return array( 'pa', 'premium', 'premium counter', 'time', 'number' );
 	}
 
 	/**
@@ -660,6 +660,7 @@ class Premium_Counter extends Widget_Base {
 					'column' => __( 'Column', 'premium-addons-for-elementor' ),
 				),
 				'default'   => 'column',
+                'render_type'=> 'template',
 				'toggle'    => false,
 				'selectors' => array(
 					'{{WRAPPER}} .premium-init-wrapper' => 'flex-direction: {{VALUE}}',

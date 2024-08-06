@@ -98,7 +98,7 @@ class Premium_Vscroll extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'full', 'section', 'navigation', 'one', 'page' );
+		return array( 'pa', 'premium', 'premium vertical scroll', 'full', 'section', 'navigation', 'one', 'page' );
 	}
 
 	/**

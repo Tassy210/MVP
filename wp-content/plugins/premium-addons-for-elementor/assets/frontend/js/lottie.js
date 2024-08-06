@@ -18730,15 +18730,17 @@
                 instance = new premiumLottieAnimations($item);
                 instance.init();
             } else {
-                var lottieOvserver = new IntersectionObserver(function($entry) {
-                    if ($entry[0].isIntersecting) {
+                var lottieOvserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            instance = new premiumLottieAnimations($item);
+                            instance.init();
 
-                        instance = new premiumLottieAnimations($item);
-                        instance.init();
-
-                        lottieOvserver.unobserve($entry[0].target); // to only excecute the callback func once.
-                    }
+                            lottieOvserver.unobserve(entry.target); // to only excecute the callback func once.
+                        }
+                    });
                 });
+
 
                 lottieOvserver.observe($item[0]);
 
@@ -18774,12 +18776,14 @@
         //     generateLottieAnimation();
         // });
 
-        var lottieAddonOvserver = new IntersectionObserver(function($entry) {
-            if ($entry[0].isIntersecting) {
+        var lottieAddonOvserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    generateLottieAnimation();
+                    lottieAddonOvserver.unobserve(entry.target); // to only excecute the callback func once.
 
-                generateLottieAnimation();
-                lottieAddonOvserver.unobserve($entry[0].target); // to only excecute the callback func once.
-            }
+                }
+            });
         });
 
         lottieAddonOvserver.observe($scope[0]);

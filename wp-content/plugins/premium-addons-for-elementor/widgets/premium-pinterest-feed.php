@@ -150,7 +150,7 @@ class Premium_Pinterest_Feed extends Widget_Base {
 	 * @return array CSS style handles.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'social', 'pin' );
+		return array( 'pa', 'premium', 'premium pinterest feed', 'social', 'pin' );
 	}
 
 	/**

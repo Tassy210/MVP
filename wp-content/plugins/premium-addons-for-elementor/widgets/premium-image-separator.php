@@ -149,7 +149,7 @@ class Premium_Image_Separator extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'divider', 'section', 'shape' );
+		return array( 'pa', 'premium', 'premium image separator', 'divider', 'section', 'shape' );
 	}
 
 	/**
@@ -972,7 +972,7 @@ class Premium_Image_Separator extends Widget_Base {
 
 		if ( 'image' === $type ) {
 
-            $image_id = apply_filters( 'wpml_object_id', $settings['premium_image_separator_image']['id'], 'attachment' );
+            $image_id = apply_filters( 'wpml_object_id', $settings['premium_image_separator_image']['id'], 'attachment', true );
 
             $image_url = wp_get_attachment_image_url( $image_id, 'full' );
 

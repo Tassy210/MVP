@@ -69,13 +69,13 @@
                 // }
 
                 // unsing IntersectionObserverAPI.
-                var eleObserver = new IntersectionObserver(function($entry) {
-                    if ($entry[0].isIntersecting) {
-
-                        _this.applyEffects(eleSettings);
-
-                        eleObserver.unobserve($entry[0].target); // to only excecute the callback func once.
-                    }
+                var eleObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            _this.applyEffects(eleSettings);
+                            eleObserver.unobserve(entry.target); // to only excecute the callback func once.
+                        }
+                    });
                 });
 
                 eleObserver.observe(_this.$element[0]);

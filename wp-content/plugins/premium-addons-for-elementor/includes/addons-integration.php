@@ -164,7 +164,7 @@ class Addons_Integration {
 			wp_send_json_error( 'Post has no title.' );
 		}
 
-        if ( ! current_user_can( 'edit_posts' ) ) {
+        if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( 'Insufficient user permission' );
 		}
 
@@ -195,7 +195,7 @@ class Addons_Integration {
 			wp_send_json_error( 'template ID is not set' );
 		}
 
-        if ( ! current_user_can( 'edit_posts' ) ) {
+        if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error( 'Insufficient user permission' );
 		}
 

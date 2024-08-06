@@ -99,7 +99,7 @@ class Premium_Fancytext extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'fancy', 'typing', 'headline', 'heading', 'animation' );
+		return array( 'pa', 'premium', 'premium animated text', 'fancy', 'typing', 'headline', 'heading', 'animation' );
 	}
 
 	/**

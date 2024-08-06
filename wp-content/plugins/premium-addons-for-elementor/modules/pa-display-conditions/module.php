@@ -380,7 +380,10 @@ class Module {
 			return;
 		}
 
-		if ( 'yes' === $element->get_settings_for_display( 'pa_display_conditions_switcher' ) ) {
+        $settings = $element->get_active_settings();
+
+		if ( ! empty( $settings[ 'pa_display_conditions_switcher' ] ) ) {
+
 			$this->enqueue_scripts();
 
 			self::$load_script = true;

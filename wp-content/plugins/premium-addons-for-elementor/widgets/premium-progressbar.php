@@ -133,7 +133,7 @@ class Premium_Progressbar extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'circle', 'chart', 'line', 'graph', 'percent' );
+		return array( 'pa', 'premium', 'premium progress bar', 'circle', 'chart', 'line', 'graph', 'percent' );
 	}
 
 	/**

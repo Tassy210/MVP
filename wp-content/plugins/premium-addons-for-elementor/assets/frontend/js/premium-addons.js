@@ -959,18 +959,26 @@
 
             if (!isHScrollWidget.length) {
                 // unsing IntersectionObserverAPI.
-                var eleObserver = new IntersectionObserver(function($entry) {
-                    if ($entry[0].isIntersecting) {
+                var eleObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            $(incrementElement).numerator(counterSettings);
 
-                        $(incrementElement).numerator(counterSettings);
+                            $(iconElement).addClass("animated " + iconElement.data("animation"));
 
-                        $(iconElement).addClass("animated " + iconElement.data("animation"));
-
-                        eleObserver.unobserve($entry[0].target); // to only excecute the callback func once.
-                    }
+                            eleObserver.unobserve(entry.target); // to only excecute the callback func once.
+                        }
+                    });
                 });
 
                 eleObserver.observe($counterElement[0]);
+                // elementorFrontend.waypoint($counterElement, function () {
+
+                //     $(incrementElement).numerator(counterSettings);
+
+                //     $(iconElement).addClass("animated " + iconElement.data("animation"));
+
+                // });
             } else {
 
                 $(window).on("scroll", function () {
@@ -1202,24 +1210,39 @@
                     var animationDelay = settings.delay || 4,
                         animationSpeed = settings.duration || 1.2;
 
-                    // unsing IntersectionObserverAPI.
-                    var eleObserver = new IntersectionObserver(function($entry) {
-                        if ($entry[0].isIntersecting) {
+                    var eleObserver = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                $elem.addClass('draw-shape');
+                                setInterval(function () {
+                                    $elem.addClass('hide-shape');
 
-                            $elem.addClass('draw-shape');
-                            setInterval(function () {
-                                $elem.addClass('hide-shape');
+                                    setTimeout(function () {
+                                        $elem.removeClass('hide-shape');
+                                    }, 1000);
+                                }, 1000 * (animationSpeed + animationDelay));
 
-                                setTimeout(function () {
-                                    $elem.removeClass('hide-shape');
-                                }, 1000);
-                            }, 1000 * (animationSpeed + animationDelay));
-
-                            eleObserver.unobserve($entry[0].target); // to only excecute the callback func once.
-                        }
+                                eleObserver.unobserve(entry.target); // to only excecute the callback func once.
+                            }
+                        });
                     });
 
                     eleObserver.observe($elem[0]);
+
+                    // elementorFrontend.waypoint($elem, function () {
+
+                    //     $elem.addClass('draw-shape');
+
+                    //     setInterval(function () {
+                    //         $elem.addClass('hide-shape');
+
+                    //         setTimeout(function () {
+                    //             $elem.removeClass('hide-shape');
+                    //         }, 1000);
+                    //     }, 1000 * (animationSpeed + animationDelay));
+
+                    // });
+
                 }
 
             }

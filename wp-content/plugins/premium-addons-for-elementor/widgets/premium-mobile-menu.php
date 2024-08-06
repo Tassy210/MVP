@@ -103,7 +103,7 @@ class Premium_Mobile_Menu extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'nav', 'navigation', 'header' );
+		return array( 'pa', 'premium', 'premium mobile menu', 'nav', 'navigation', 'header' );
 	}
 
 	/**
@@ -744,7 +744,7 @@ class Premium_Mobile_Menu extends Widget_Base {
 					'type'      => Controls_Manager::COLOR,
 					'default'   => '#61CE70',
 					'selectors' => array(
-						'{{WRAPPER}} {{CURRENT_ITEM}}:not(.lottie-item) svg *' => 'stroke: {{VALUE}};',
+						'{{WRAPPER}} {{CURRENT_ITEM}}.premium-mobile-menu__item:not(.lottie-item) svg *' => 'stroke: {{VALUE}};',
 					),
 					'condition' => array(
 						'icon_type' => array( 'icon', 'svg' ),

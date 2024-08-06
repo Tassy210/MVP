@@ -135,7 +135,7 @@ class Premium_Nav_Menu extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'menu', 'nav', 'navigation', 'mega menu', 'header' );
+		return array( 'pa', 'premium', 'premium mega menu', 'menu', 'nav', 'navigation', 'mega menu', 'header' );
 	}
 
 	/**

@@ -96,7 +96,7 @@ class Premium_Weather extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'magazine', 'news', 'weather', 'forecast' );
+		return array( 'pa', 'premium', 'premium weather', 'magazine', 'news', 'weather', 'forecast' );
 	}
 
 	/**

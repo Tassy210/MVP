@@ -41,7 +41,10 @@ if (!class_exists("WD_ASL_StyleSheets_Action")) {
 		            if ($styles['inline'] != "") {
 			            ?>
 			            <style>
-				            <?php echo $styles['inline']; ?>
+				            <?php
+				            // prevent any XSS
+				            echo str_replace(array('</style', '</', '<'), '',$styles['inline']);
+							?>
 			            </style>
 			            <?php
 		            }

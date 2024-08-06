@@ -153,7 +153,7 @@ class Premium_Modalbox extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'popup', 'lightbox', 'advanced', 'embed' );
+		return array( 'pa', 'premium', 'premium modal box', 'popup', 'lightbox', 'advanced', 'embed' );
 	}
 
 	/**

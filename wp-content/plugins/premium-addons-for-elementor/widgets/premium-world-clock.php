@@ -120,7 +120,7 @@ class Premium_World_Clock extends Widget_Base {
 	 * @return array CSS style handles.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'world', 'clock', 'timezone', 'time' );
+		return array( 'pa', 'premium', 'premium world clock', 'world', 'clock', 'timezone', 'time' );
 	}
 
 	/**

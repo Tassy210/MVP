@@ -118,7 +118,7 @@ class Premium_Tcloud extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'tag', 'cat', 'product', 'woo', 'query', 'cpt' );
+		return array( 'pa', 'premium', 'premium tags cloud', 'tag', 'cat', 'product', 'woo', 'query', 'cpt' );
 	}
 
 	/**

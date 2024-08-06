@@ -116,7 +116,7 @@ class Premium_Person extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'person', 'carousel', 'slider', 'group' );
+		return array( 'pa', 'premium', 'premium team members', 'person', 'carousel', 'slider', 'group' );
 	}
 
 	/**

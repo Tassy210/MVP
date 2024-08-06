@@ -139,7 +139,7 @@ class Premium_Image_Button extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'cta', 'call', 'link', 'btn' );
+		return array( 'pa', 'premium', 'premium image button', 'cta', 'call', 'link', 'btn' );
 	}
 
 	/**

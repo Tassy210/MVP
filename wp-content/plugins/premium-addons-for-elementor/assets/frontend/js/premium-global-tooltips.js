@@ -28,17 +28,18 @@
 
             if ('viewport' === settings.trigger) {
                 // unsing IntersectionObserverAPI.
-                var eleObserver = new IntersectionObserver(function($entry) {
-                    if ($entry[0].isIntersecting) {
+                var eleObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            if ('' !== settings.target) {
+                                $scope.find(settings.target).tooltipster('open');
+                            } else {
+                                $scope.tooltipster('open');
+                            }
 
-                        if ('' !== settings.target) {
-                            $scope.find(settings.target).tooltipster('open');
-                        } else {
-                            $scope.tooltipster('open');
+                            eleObserver.unobserve(entry.target); // to only excecute the callback func once.
                         }
-
-                        eleObserver.unobserve($entry[0].target); // to only excecute the callback func once.
-                    }
+                    });
                 });
 
                 eleObserver.observe($scope[0]);

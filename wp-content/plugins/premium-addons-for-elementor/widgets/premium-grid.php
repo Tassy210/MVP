@@ -156,7 +156,7 @@ class Premium_Grid extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'layout', 'gallery', 'image', 'video', 'portfolio', 'visual', 'masonry', 'youtube', 'vimeo' );
+		return array( 'pa', 'premium', 'premium media grid', 'layout', 'gallery', 'image', 'video', 'portfolio', 'visual', 'masonry', 'youtube', 'vimeo' );
 	}
 
 	/**
@@ -590,7 +590,7 @@ class Premium_Grid extends Widget_Base {
 				'label'       => __( 'URL Flag', 'premium-addons-for-elementor' ),
 				'type'        => Controls_Manager::TEXT,
 				'default'     => 'cat',
-				'description' => __( 'This is used to link categories from different pages. For example: premiumaddons.com/grid-widget-for-elementor-page-builder?cat=2', 'premium-addons-for-elementor' ),
+				'description' => __( 'This is used to link categories from different pages. For example: premiumaddons.com/elementor-grid-widget?cat=2', 'premium-addons-for-elementor' ),
 				'label_block' => true,
 				'condition'   => $condition,
 			)

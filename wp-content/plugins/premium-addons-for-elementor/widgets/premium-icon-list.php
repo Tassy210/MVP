@@ -158,7 +158,7 @@ class Premium_Icon_List extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'icon', 'feature', 'list' );
+		return array( 'pa', 'premium', 'premium bullet list', 'icon', 'feature', 'list' );
 	}
 
 	/**

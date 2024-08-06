@@ -214,21 +214,21 @@
                 var animationDelay = settings.delay || 4,
                     animationSpeed = settings.duration || 1.2;
 
-                // unsing IntersectionObserverAPI.
-                var eleObserver = new IntersectionObserver(function($entry) {
-                    if ($entry[0].isIntersecting) {
+                var eleObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            $elem.addClass('draw-shape');
+                            setInterval(function () {
+                                $elem.addClass('hide-shape');
 
-                        $elem.addClass('draw-shape');
-                        setInterval(function () {
-                            $elem.addClass('hide-shape');
+                                setTimeout(function () {
+                                    $elem.removeClass('hide-shape');
+                                }, 1000);
+                            }, 1000 * (animationSpeed + animationDelay));
 
-                            setTimeout(function () {
-                                $elem.removeClass('hide-shape');
-                            }, 1000);
-                        }, 1000 * (animationSpeed + animationDelay));
-
-                        eleObserver.unobserve($entry[0].target); // to only excecute the callback func once.
-                    }
+                            eleObserver.unobserve(entry.target); // to only excecute the callback func once.
+                        }
+                    });
                 });
 
                 eleObserver.observe($elem[0]);

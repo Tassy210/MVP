@@ -7,7 +7,7 @@
             if (!$scope.hasClass("premium-equal-height-yes"))
                 return;
 
-            var timeToWait = $scope.find('.premium-carousel-inner, ul.products, .swiper-container').length ? 1500 : 10;
+            var timeToWait = $scope.find('.premium-carousel-inner, ul.products').length ? 1500 : 10;
 
             setTimeout(function () {
                 premiumEqHeightHandler($scope);
@@ -34,11 +34,13 @@
                 // elementorFrontend.waypoint($scope, function () {
                 //     triggerEqualHeight();
                 // });
-                var eleObserver = new IntersectionObserver(function($entry) {
-                    if ($entry[0].isIntersecting) {
-                        triggerEqualHeight();
-                        eleObserver.unobserve($entry[0].target); // to only excecute the callback func once.
-                    }
+                var eleObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            triggerEqualHeight();
+                            eleObserver.unobserve(entry.target); // to only excecute the callback func once.
+                        }
+                    });
                 });
 
                 eleObserver.observe($scope[0]);

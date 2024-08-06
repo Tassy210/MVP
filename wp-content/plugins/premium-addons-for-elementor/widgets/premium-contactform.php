@@ -80,7 +80,7 @@ class Premium_Contactform extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'form7', 'contact' );
+		return array( 'pa', 'premium', 'premium contact form', 'form7', 'contact' );
 	}
 
 	/**

@@ -235,7 +235,7 @@ function get_video_url( $url ) {
 
     $content = get_video_content( $url );
 
-    $check = explode('"downloadAddr":"', $content);
+    $check = explode('"playAddr":"', $content);
 
     $contentURL = explode("\"", $check[1])[0];
     $contentURL = escape_sequence_decode($contentURL);

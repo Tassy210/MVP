@@ -1096,7 +1096,9 @@ class Module {
 			return;
 		}
 
-		if ( 'yes' === $element->get_settings_for_display( 'premium_global_divider_sw' ) ) {
+        $settings = $element->get_active_settings();
+
+		if ( ! empty( $settings[ 'premium_global_divider_sw' ] ) ) {
 
 			$this->enqueue_styles();
 			$this->enqueue_scripts();

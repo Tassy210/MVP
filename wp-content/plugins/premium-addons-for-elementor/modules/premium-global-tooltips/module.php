@@ -1269,7 +1269,9 @@ class Module {
 			return;
 		}
 
-		if ( 'yes' === $element->get_settings_for_display( 'premium_tooltip_switcher' ) ) {
+        $settings = $element->get_active_settings();
+
+		if ( ! empty( $settings[ 'premium_tooltip_switcher' ] ) ) {
 
 			$this->enqueue_styles();
 			$this->enqueue_scripts();

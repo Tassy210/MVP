@@ -6563,7 +6563,7 @@ msgstr ""
 #: widgets/premium-grid.php:587
 msgid ""
 "This is used to link categories from different pages. For example: "
-"premiumaddons.com/grid-widget-for-elementor-page-builder?cat=2"
+"premiumaddons.com/elementor-grid-widget?cat=2"
 msgstr ""
 
 #: widgets/premium-grid.php:598

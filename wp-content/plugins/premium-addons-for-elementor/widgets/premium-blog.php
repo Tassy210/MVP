@@ -118,7 +118,7 @@ class Premium_Blog extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'posts', 'grid', 'item', 'loop', 'query', 'portfolio', 'cpt', 'custom' );
+		return array( 'pa', 'premium', 'premium blog', 'posts', 'grid', 'item', 'loop', 'query', 'portfolio', 'cpt', 'custom' );
 	}
 
 	/**

@@ -91,7 +91,7 @@ class Premium_Banner extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'image', 'box', 'info', 'cta' );
+		return array( 'pa', 'premium', 'premium banner', 'image', 'box', 'info', 'cta' );
 	}
 
 	/**
@@ -1423,7 +1423,7 @@ class Premium_Banner extends Widget_Base {
 
 		if ( ! empty( $settings['premium_banner_image']['url'] ) ) {
 
-            $image_id = apply_filters( 'wpml_object_id', $settings['premium_banner_image']['id'], 'attachment' );
+            $image_id = apply_filters( 'wpml_object_id', $settings['premium_banner_image']['id'], 'attachment', true );
 
             $settings['premium_banner_image']['id'] = $image_id;
 

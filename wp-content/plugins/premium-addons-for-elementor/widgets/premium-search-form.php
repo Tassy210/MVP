@@ -76,7 +76,7 @@ class Premium_Search_Form extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'ajax' );
+		return array( 'pa', 'premium', 'premium search form', 'ajax' );
 	}
 
 	/**

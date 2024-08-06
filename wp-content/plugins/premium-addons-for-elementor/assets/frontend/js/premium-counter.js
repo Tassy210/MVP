@@ -10,15 +10,16 @@
 
         if (!isHScrollWidget.length) {
             // unsing IntersectionObserverAPI.
-            var eleObserver = new IntersectionObserver(function($entry) {
-                if ($entry[0].isIntersecting) {
+            var eleObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        $(incrementElement).numerator(counterSettings);
 
-                    $(incrementElement).numerator(counterSettings);
+                        $(iconElement).addClass("animated " + iconElement.data("animation"));
 
-                    $(iconElement).addClass("animated " + iconElement.data("animation"));
-
-                    eleObserver.unobserve($entry[0].target); // to only excecute the callback func once.
-                }
+                        eleObserver.unobserve(entry.target); // to only excecute the callback func once.
+                    }
+                });
             });
 
             eleObserver.observe($counterElement[0]);

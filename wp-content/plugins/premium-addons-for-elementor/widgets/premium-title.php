@@ -152,7 +152,7 @@ class Premium_Title extends Widget_Base {
 	 * @return array CSS style handles.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'title', 'text', 'headline' );
+		return array( 'pa', 'premium', 'premium heading', 'title', 'text', 'headline' );
 	}
 
 	/**

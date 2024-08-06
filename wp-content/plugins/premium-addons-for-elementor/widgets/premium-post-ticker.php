@@ -99,7 +99,7 @@ class Premium_Post_Ticker extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'magazine', 'news', 'posts', 'listing', 'ticker', 'grid', 'blog' );
+		return array( 'pa', 'premium', 'premium news ticker', 'magazine', 'news', 'posts', 'listing', 'ticker', 'grid', 'blog' );
 	}
 
 	/**

@@ -118,7 +118,7 @@ class Premium_Videobox extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'youtube', 'vimeo', 'self', 'hosted', 'media', 'list', 'embed', 'dailymotion' );
+		return array( 'pa', 'premium', 'premium video box', 'youtube', 'vimeo', 'self', 'hosted', 'media', 'list', 'embed', 'dailymotion' );
 	}
 
 	/**

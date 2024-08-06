@@ -144,7 +144,7 @@ class Premium_Media_Wheel extends Widget_Base {
 	 * @return array JS script handles.
 	 */
 	public function get_keywords() {
-		return array( 'youtube', 'vimeo', 'self', 'hosted', 'scroll', 'image scroll', 'carousel', 'flip', 'coverflow', 'media' );
+		return array( 'youtube', 'premium advanced carousel', 'vimeo', 'self', 'hosted', 'scroll', 'image scroll', 'carousel', 'flip', 'coverflow', 'media' );
 	}
 
 	/**
@@ -2605,7 +2605,7 @@ class Premium_Media_Wheel extends Widget_Base {
 						<?php
 						if ( 'image' === $media_type ) {
 
-                            $image_id = apply_filters( 'wpml_object_id', $item['media_wheel_img']['id'], 'attachment' );
+                            $image_id = apply_filters( 'wpml_object_id', $item['media_wheel_img']['id'], 'attachment', true );
 
                             $image_url = wp_get_attachment_image_url( $image_id, 'full' );
 

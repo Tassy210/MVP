@@ -153,7 +153,7 @@ class Premium_Pricing_Table extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'price', 'feature', 'list', 'bullet', 'cta' );
+		return array( 'pa', 'premium', 'premium pricing table', 'price', 'feature', 'list', 'bullet', 'cta' );
 	}
 
 	/**

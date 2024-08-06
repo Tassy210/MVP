@@ -115,7 +115,7 @@ class Premium_Notifications extends Widget_Base {
 	 * @return string Widget keywords.
 	 */
 	public function get_keywords() {
-		return array( 'pa', 'premium', 'posts', 'alert', 'recent', 'query', 'box', 'cpt', 'custom' );
+		return array( 'pa', 'premium', 'premium recent posts notification', 'posts', 'alert', 'recent', 'query', 'box', 'cpt', 'custom' );
 	}
 
 	/**
