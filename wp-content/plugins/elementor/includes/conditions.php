@@ -84,12 +84,6 @@ class Conditions {
 			} else {
 				preg_match( '/(\w+)(?:\[(\w+)])?/', $term['name'], $parsed_name );
 
-				if (isset($array['background_color'])) {
-					$background_color = $array['background_color'];
-				} else {
-					$background_color = 'default_value'; // or handle it appropriately
-				}
-
 				$value = $comparison[ $parsed_name[1] ];
 
 				if ( ! empty( $parsed_name[2] ) ) {
