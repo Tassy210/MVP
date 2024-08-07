@@ -1,10 +1,28 @@
 from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
-from .models import AcaoExtensao,TipoAcao,SituacaoAcao
+from .models import AcaoExtensao,TipoAcao,SituacaoAcao, Estados, Cidades
 from datetime import datetime
+from .forms import AcaoExtensaoForm
+from django.http import JsonResponse
+
+def cidades_por_estado(request, idEstado):
+    cidades = Cidades.objects.filter(UF=idEstado).values('idCidade', 'Cidade')
+    return JsonResponse({'cidades': list(cidades)})
+
+def criarAcao(request):
+    
+    if request.method == 'POST':
+        form = AcaoExtensaoForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = AcaoExtensaoForm()
+    return render(request, 'criarAcao.html', {'form': form})
 
 def index(request):
-    return render(request, 'index.html')
+    estados = Estados.objects.all()
+    return render(request, 'index.html', {'estados': estados})
 
 def menu(request):
     return render(request, 'menu.html')
@@ -18,15 +36,17 @@ def sobre(request):
 def contato(request):
     return render(request, 'contato.html')
 
-def projeto(request):
+
+def projeto(request, idAcao):
     tipos = TipoAcao.objects.all()
     situacoes = SituacaoAcao.objects.all()
     acoes = AcaoExtensao.objects.all()
-    
+    projeto = get_object_or_404(AcaoExtensao, idAcao=idAcao)
     return render(request, 'projeto.html',{
     'acoes': acoes,
     'tipos': tipos,
     'situacoes': situacoes,
+    'projeto': projeto,
     })
  
 def extensoes(request):
@@ -87,3 +107,4 @@ def extensoes(request):
         'data_inicio': data_inicio,
         'data_fim': data_fim
     })
+

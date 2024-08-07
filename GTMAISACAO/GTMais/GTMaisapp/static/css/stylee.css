@@ -16,9 +16,31 @@ body {
     padding-top: 2%;
     padding-bottom: 2%;
 }
+.center h1{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.icon{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.box2{
+    width: 50%; 
+    float: left; 
+}
+.box2 img{
+    max-width: 100%;
+}
 .box {
     width: 50%; 
     float: left; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }.boxblue{
     padding: 5% 5%;
 }
@@ -43,10 +65,9 @@ body {
     border-radius: 8px; 
     background-color:#1F2B5B; 
     color:white;
+    
 }
-.buttondarkblue p{
-    margin-top: -1px;
-}
+
 header {
     background-color: #1F2B5B;
 }
@@ -161,17 +182,25 @@ button{
         text-align:center;
 }
 .formfiltro{    
-    padding:2%;
-    background-color:white;
     display: inline-block;
+    padding:2%;
+ 
     text-align: center;
     width:90%;
     max-width: 1000px;
+
+}
+.amplia{
+    display: none;
+}
+.box-shadow{
+    background-color:white;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
 .image-container {
     position: relative;
     display: inline-block; 
+    width: 100%;
 }
 
 .image-container img {

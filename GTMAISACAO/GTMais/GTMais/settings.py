@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'GTMaisapp',
     'django_extensions',
     'livereload',
-     "django_icons",
+    "django_icons",
 ]
 
 MIDDLEWARE = [
@@ -73,7 +73,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'GTMais.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -133,3 +132,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+os.environ['GDAL_LIBRARY_PATH'] = 'C:/OSGeo4W/bin'

@@ -8,5 +8,7 @@ urlpatterns = [
     path('extensoes/', views.extensoes, name='extensoes'),
     path('sobre/', views.sobre, name='sobre'),   
     path('contato/', views.contato, name='contato'),
-    path('projeto/', views.projeto, name='projeto'),
+    path('projeto/<int:idAcao>/', views.projeto, name='projeto'),
+    path('criarAcao/', views.criarAcao, name='criarAcao'),
+    path('cidades/<int:idEstado>/', views.cidades_por_estado, name='cidades_por_estado'),
 ]

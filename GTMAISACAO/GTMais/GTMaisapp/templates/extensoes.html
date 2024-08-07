@@ -19,14 +19,21 @@
 
 <body>
    
-    <div style="   margin: 0 auto;
-        display: grid;
-        place-items: center;">
-        <h1>Portifólio de Ações de Extensão</h1>
-    <form class="formfiltro" method="get" action="{% url 'extensoes' %}">
+  
+       
+          <div style="   margin: 0 auto;
+            display: grid;
+            place-items: center;">
+            <h1>Portifólio de Ações de Extensão</h1>
+        <form id="filtro" class="formfiltro" method="get" action="{% url 'extensoes' %}">
         <div class="pesquisar">
             <input type="text" name="search" placeholder="Pesquisar" value="{{ search_term }}">
-        </div>
+            <button type="button" onclick="filtroDiv()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
+                    <path fill="#ffffff" d="M16 120h480v48H16zm80 112h320v48H96zm96 112h128v48H192z"></path>
+                </svg>
+            </button>
+            </div>
         <div class="selects">
             <div>
                 <p>Localidade</p>
@@ -75,7 +82,7 @@
        
     </div>--> 
 <br><br>
-    <div class="select">
+    <div id="amplia" class=" amplia">
         
         <div class="checkbox-group" name="situacao" id="situacao">
             <p>Exibição</p>
@@ -98,9 +105,10 @@
         <button type="submit">Aplicar Filtros</button>
     </form>
     
-   
             {% for acao in acoes %}
-            <a href="/projeto/">
+       
+            <a href="{% url 'projeto' acao.idAcao %}">
+
             <div class="containerproject">
             <img src="{% static 'img/projeto1.png' %}" alt="Mapa">
             <div class="text">
@@ -120,7 +128,7 @@
             </tr>-->
         </div>
     </div>
-</a>
+</a><br>
             {% empty %}
             <tr>
                 <td colspan="11">Nenhuma ação encontrada.</td>
@@ -129,7 +137,21 @@
         </tbody>
     </table>
 </div>
-</body>
-</html>
-
+<script>
+    function filtroDiv() {
+        var filtro = document.getElementById("filtro");
+        var content = document.getElementById("amplia");
+        if (content.style.display === "none") {
+            content.style.display = "flex";
+          
+            filtro.classList.add("box-shadow");
+            content.classList.add("select");
+            
+        } else {
+            content.style.display = "none";
+            content.classList.remove("select");
+            filtro.classList.remove("box-shadow");
+        }
+    }
+</script>
 {% endblock %}
