@@ -73,32 +73,34 @@ class Conditions {
 	 *
 	 * @return bool Whether the comparison conditions comply.
 	 */
+	
 	public static function check( array $conditions, array $comparison ) {
 		$is_or_condition = isset( $conditions['relation'] ) && 'or' === $conditions['relation'];
-
+	
 		$condition_succeed = ! $is_or_condition;
-
+	
 		foreach ( $conditions['terms'] as $term ) {
 			if ( ! empty( $term['terms'] ) ) {
 				$comparison_result = self::check( $term, $comparison );
 			} else {
 				preg_match( '/(\w+)(?:\[(\w+)])?/', $term['name'], $parsed_name );
-
-				$value = $comparison[ $parsed_name[1] ];
-
-				if ( ! empty( $parsed_name[2] ) ) {
-					$value = $value[ $parsed_name[2] ];
+	
+				// Modificação para evitar erro de chave indefinida
+				$value = isset( $comparison[ $parsed_name[1] ] ) ? $comparison[ $parsed_name[1] ] : null;
+	
+				if ( ! empty( $parsed_name[2] ) && is_array( $value ) ) {
+					$value = isset( $value[ $parsed_name[2] ] ) ? $value[ $parsed_name[2] ] : null;
 				}
-
+	
 				$operator = null;
-
+	
 				if ( ! empty( $term['operator'] ) ) {
 					$operator = $term['operator'];
 				}
-
+	
 				$comparison_result = self::compare( $value, $term['value'], $operator );
 			}
-
+	
 			if ( $is_or_condition ) {
 				if ( $comparison_result ) {
 					return true;
@@ -107,7 +109,8 @@ class Conditions {
 				return false;
 			}
 		}
-
+	
 		return $condition_succeed;
 	}
+	
 }
