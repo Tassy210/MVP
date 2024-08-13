@@ -902,7 +902,7 @@ html.premium-woo-qv-opened body {
     margin: 0;
 }
 
-#premium-woo-quick-view-close {
+.premium-woo-quick-view-close {
     position: absolute;
     font-size: 22px;
     top: 10px;

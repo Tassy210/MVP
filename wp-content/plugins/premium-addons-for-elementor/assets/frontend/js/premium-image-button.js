@@ -24,5 +24,5 @@
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/premium-addon-image-button.default', PremiumButtonHandler);
     });
- })(jQuery);
+})(jQuery);
 

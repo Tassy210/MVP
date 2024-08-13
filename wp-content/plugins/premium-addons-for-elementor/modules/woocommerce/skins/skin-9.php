@@ -475,7 +475,7 @@ class Skin_9 extends Skin_Base {
 		$this->start_controls_section(
 			'section_quick_view_style',
 			array(
-				'label'     => __( 'Quick View Button', 'premium-addons-for-elementor' ),
+				'label'     => __( 'Quick View Trigger Button', 'premium-addons-for-elementor' ),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => array(
 					$this->get_control_id( 'quick_view' ) => 'yes',
@@ -670,7 +670,8 @@ class Skin_9 extends Skin_Base {
 
 			$skin = Skin_Init::get_instance( $this->get_id() );
 
-			echo wp_kses_post( $skin->render( $this->get_id(), $settings, $this->parent->get_id() ) );
+			echo wp_kses_post( sanitize_text_field( $skin->render( $this->get_id(), $settings, $this->parent->get_id() ) ) );
+
 		}
 	}
 }

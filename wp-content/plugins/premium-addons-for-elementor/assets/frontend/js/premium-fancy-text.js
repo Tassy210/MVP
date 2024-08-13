@@ -214,8 +214,8 @@
                 var animationDelay = settings.delay || 4,
                     animationSpeed = settings.duration || 1.2;
 
-                var eleObserver = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
+                var eleObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
                         if (entry.isIntersecting) {
                             $elem.addClass('draw-shape');
                             setInterval(function () {

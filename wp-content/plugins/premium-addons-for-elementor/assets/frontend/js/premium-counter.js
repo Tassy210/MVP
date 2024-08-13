@@ -10,8 +10,8 @@
 
         if (!isHScrollWidget.length) {
             // unsing IntersectionObserverAPI.
-            var eleObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
+            var eleObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         $(incrementElement).numerator(counterSettings);
 

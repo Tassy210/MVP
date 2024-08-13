@@ -17,15 +17,15 @@ jQuery(window).on("elementor/frontend/init", function () {
 
             var $closestSection = $scope.closest('.elementor-top-section, .e-con');
 
-            var eleObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
+            var eleObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         premiumMap = newMap(mapElement, mapSettings, mapStyle);
                         eleObserver.unobserve(entry.target); // to only excecute the callback func once.
                     }
                 });
             }, {
-                rootMargin: '70% 0px 0px 0px'
+                rootMargin: '-70% 0px 0px 0px'
             });
 
             eleObserver.observe($closestSection[0]);

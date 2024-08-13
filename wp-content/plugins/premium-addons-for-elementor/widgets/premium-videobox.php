@@ -103,6 +103,7 @@ class Premium_Videobox extends Widget_Base {
 	 */
 	public function get_script_depends() {
 		return array(
+			'pa-scrolldir',
 			'prettyPhoto-js',
 			'jquery-ui-draggable',
 			'premium-addons',

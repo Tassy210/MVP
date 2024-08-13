@@ -45,8 +45,8 @@
                 var $listItems = this.elements.$listItems,
                     $items = this.elements.$items;
 
-                var eleObserver = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
+                var eleObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
                         if (entry.isIntersecting) {
 
                             var element = $(entry.target),

@@ -197,15 +197,19 @@
 
         self.getProductByAjax = function (itemID) {
 
+            var pageID = $elem.data('page-id');
+
             $.ajax({
                 url: PremiumWooSettings.ajaxurl,
                 data: {
                     action: 'get_woo_product_qv',
+                    pageID: pageID,
+                    elemID: $scope.data('id'),
                     product_id: itemID,
                     security: PremiumWooSettings.qv_nonce
                 },
                 dataType: 'html',
-                type: 'GET',
+                type: 'POST',
                 beforeSend: function () {
 
                     $qvLoader.append('<div class="premium-loading-feed"><div class="premium-loader"></div></div>');
@@ -214,6 +218,8 @@
                 success: function (data) {
 
                     $qvLoader.find('.premium-loading-feed').remove();
+
+                    $elem.trigger('qv_loaded');
 
                     //Insert the product content in the quick view modal.
                     $contentWrap.html(data);
@@ -228,7 +234,7 @@
 
         self.addCloseEvents = function () {
 
-            var $closeBtn = $qvModal.find('#premium-woo-quick-view-close');
+            var $closeBtn = $qvModal.find('.premium-woo-quick-view-close');
 
             $(document).keyup(function (e) {
                 if (e.keyCode === 27)
@@ -277,6 +283,8 @@
 
                 $productSlider.flexslider({
                     animation: "slide",
+                    nextText: '',
+                    prevText: '',
                     start: function (slider) {
                         setTimeout(function () {
                             self.updateQuickViewHeight(true, true);
@@ -308,7 +316,7 @@
         self.updateQuickViewHeight = function (update_css, isCarousel) {
             var $quickView = $contentWrap,
                 imgHeight = $quickView.find('.product .premium-woo-qv-image-slider').first().height(),
-                summary = $quickView.find('.product .summary.entry-summary'),
+                summary = $quickView.find('.premium-woo-product-summary'),
                 content = summary.css('content');
 
             if ('undefined' != typeof content && 544 == content.replace(/[^0-9]/g, '') && 0 != imgHeight && null !== imgHeight) {

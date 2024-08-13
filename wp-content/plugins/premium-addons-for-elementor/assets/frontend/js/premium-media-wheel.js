@@ -25,16 +25,14 @@
             } else {
 
                 // unsing IntersectionObserverAPI.
-                var wheelObserver = new IntersectionObserver(function(entries) {
+                var wheelObserver = new IntersectionObserver(function (entries) {
 
-                    entries.forEach(function(entry) {
+                    entries.forEach(function (entry) {
                         if (entry.isIntersecting) {
                             runInfiniteAnimation();
                             wheelObserver.unobserve(entry.target); // to only excecute the callback func once.
                         }
                     });
-                }, {
-                    rootMargin: "100% 0px 0px 0px"
                 });
 
                 wheelObserver.observe($scope[0]);
@@ -122,8 +120,8 @@
                 // });
 
                 // unsing IntersectionObserverAPI.
-                var eleObserver = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
+                var eleObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
                         if (entry.isIntersecting) {
 
                             $.fn.focusWithoutScrolling = function () {
@@ -259,7 +257,7 @@
                     accumlativeWidth = 0;
 
                 // clone the items till the width is equal to the viewport width
-                while (horAlignWidth <= $scope.outerWidth(true) || ( horAlignWidth - $scope.outerWidth(true) <= 400 ) ) {
+                while (horAlignWidth <= $scope.outerWidth(true) || (horAlignWidth - $scope.outerWidth(true) <= 400)) {
 
                     cloneItems();
                     // recalculate the full width.

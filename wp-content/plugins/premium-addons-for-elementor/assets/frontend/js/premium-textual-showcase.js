@@ -23,8 +23,6 @@
                     eleObserver.unobserve(entry.target); // to only excecute the callback func once.
                 }
             });
-        }, {
-            rootMargin: "100% 0px 0px 0px"
         });
 
         eleObserver.observe($scope[0]);

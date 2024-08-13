@@ -34,8 +34,8 @@
             // });
 
             // unsing IntersectionObserverAPI.
-            var eleObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
+            var eleObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         setTimeout(function () {
                             $modal.css("opacity", "1").addClass("animated " + $modal.data("modal-animation"));
@@ -45,7 +45,7 @@
                     }
                 });
             }, {
-                rootMargin: "0px 0px -150px 0px"
+                threshold: 0.25
             });
 
             eleObserver.observe($modal[0]);
@@ -55,5 +55,5 @@
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/premium-addon-modal-box.default', PremiumModalBoxHandler);
     });
- })(jQuery);
+})(jQuery);
 

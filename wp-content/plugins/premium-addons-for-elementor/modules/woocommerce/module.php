@@ -183,6 +183,25 @@ class Module extends Module_Base {
 			die();
 		}
 
+        $post_id   = sanitize_text_field( wp_unslash( $_POST['pageID'] ) );
+		$widget_id = sanitize_text_field( wp_unslash( $_POST['elemID'] ) );
+
+		$elementor = Plugin::$instance;
+		$meta      = $elementor->documents->get( $post_id )->get_elements_data();
+
+        $widget_data = $this->find_element_recursive( $meta, $widget_id );
+
+        if ( null == $widget_data ) {
+
+            wp_send_json_error('Widget settings not found.');
+
+        }
+
+        // Restore default values.
+        $widget = $elementor->elements_manager->create_element_instance( $widget_data );
+
+        $settings = $widget->get_settings();
+
 		$this->quick_view_content_actions();
 
 		$product_id = intval( $_REQUEST['product_id'] );
@@ -209,7 +228,7 @@ class Module extends Module_Base {
 	 * @since 4.7.0
 	 */
 	public function quick_view_content_actions() {
-		add_action( 'premium_woo_qv_image', 'woocommerce_show_product_sale_flash', 10 );
+		// add_action( 'premium_woo_qv_image', 'woocommerce_show_product_sale_flash', 10 );
 		// Image.
 		add_action( 'premium_woo_qv_image', array( $this, 'product_quick_view_image_content' ), 20 );
 		// Summary.
@@ -257,7 +276,12 @@ class Module extends Module_Base {
 	 *
 	 * @since 4.7.0
 	 */
-	public function product_quick_view_content() {
+	public function product_quick_view_content( $settings ) {
+
+        // $qv_rating = 'yes' === $settings['qv_rating'];
+        // $qv_price  = 'yes' === $settings['qv_price'];
+        // $qv_desc  = 'yes' === $settings['qv_desc'];
+        // $qv_atc  = 'yes' === $settings['qv_atc'];
 
 		global $product;
 
@@ -270,8 +294,8 @@ class Module extends Module_Base {
 				'ratings',
 				'price',
 				'short_desc',
-				'meta',
 				'add_cart',
+                'meta'
 			)
 		);
 
@@ -279,27 +303,36 @@ class Module extends Module_Base {
 
 			foreach ( $single_structure as $value ) {
 
-				switch ( $value ) {
-					case 'title':
-						echo '<a href="' . esc_url( apply_filters( 'premium_woo_product_title_link', get_permalink( $post_id ) ) ) . '">';
-							woocommerce_template_single_title();
+				switch ( true ) {
+					case 'title' === $value:
+						echo '<a href="' . esc_url( apply_filters( 'premium_woo_product_title_link', get_the_permalink() ) ) . '" class="premium-woo-product__link">';
+							woocommerce_template_loop_product_title();
 						echo '</a>';
 						break;
-					case 'price':
+					case 'price' === $value:
 						woocommerce_template_single_price();
 						break;
-					case 'ratings':
-						woocommerce_template_single_rating();
+					case 'ratings' === $value:
+						woocommerce_template_loop_rating();
 						break;
-					case 'short_desc':
-						woocommerce_template_single_excerpt();
+					case 'short_desc' === $value:
+                        echo '<div class="premium-woo-qv-desc">';
+                            woocommerce_template_single_excerpt();
+                        echo '</div>';
 						break;
-					case 'add_cart':
-						woocommerce_template_single_add_to_cart();
+					case 'add_cart' === $value:
+                            $attributes = count( $product->get_attributes() ) > 0 ? 'data-variations="true"' : '';
+							echo '<div class="premium-woo-atc-button" ' . esc_attr( $attributes ) . '>';
+								woocommerce_template_single_add_to_cart();
+							echo '</div>';
 						break;
-					case 'meta':
-						woocommerce_template_single_meta();
+                        case 'meta' === $value:
+                            $attributes = count( $product->get_attributes() ) > 0 ? 'data-variations="true"' : '';
+							echo '<div class="premium-woo-qv-meta">';
+                                woocommerce_template_single_meta();
+							echo '</div>';
 						break;
+
 					default:
 						break;
 				}

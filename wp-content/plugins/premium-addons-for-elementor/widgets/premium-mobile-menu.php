@@ -376,7 +376,7 @@ class Premium_Mobile_Menu extends Widget_Base {
 					'label'     => __( 'Draw All Paths Together', 'premium-addons-for-elementor' ),
 					'type'      => Controls_Manager::SWITCHER,
 					'condition' => array(
-						'icon_type' => array( 'icon', 'svg' ),
+						'icon_type' => 'svg',
 						'draw_svg'  => 'yes',
 					),
 				)

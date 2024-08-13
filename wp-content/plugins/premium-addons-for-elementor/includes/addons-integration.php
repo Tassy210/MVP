@@ -637,6 +637,14 @@ class Addons_Integration {
 		wp_register_script( 'tiktok-embed', 'https://www.tiktok.com/embed.js', array(), false, true );
 
 		wp_register_script(
+			'pa-scrolldir',
+			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/pa-scrolldir' . $suffix . '.js',
+			array( 'jquery' ),
+			PREMIUM_ADDONS_VERSION,
+			true
+		);
+
+		wp_register_script(
 			'prettyPhoto-js',
 			PREMIUM_ADDONS_URL . 'assets/frontend/' . $dir . '/prettyPhoto' . $suffix . '.js',
 			array( 'jquery' ),

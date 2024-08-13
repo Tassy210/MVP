@@ -58,6 +58,8 @@ while ( have_posts() ) :
 		}
 	}
 
+    $classes[] = $settings['qv_display'];
+
 	$key = array_search( 'hentry', $classes, true );
 	if ( false !== $key ) {
 		unset( $classes[ $key ] );
@@ -66,8 +68,8 @@ while ( have_posts() ) :
 <div class="premium-woo-product">
 	<div id="product-<?php echo esc_attr( $post_id ); ?>" class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 		<?php do_action( 'premium_woo_qv_image' ); ?>
-		<div class="summary entry-summary">
-			<?php do_action( 'premium_woo_quick_view_product' ); ?>
+		<div class="premium-woo-product-summary entry-summary">
+			<?php do_action( 'premium_woo_quick_view_product', $settings ); ?>
 		</div>
 	</div>
 </div>

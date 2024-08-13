@@ -1974,20 +1974,37 @@
                         targettimeLine.pause();
                     });
             } else {
+                // unsing IntersectionObserverAPI.
+                var eleObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry, index) {
 
-                elementorFrontend.waypoint($scope, function (direction) {
-                    targettimeLine.play();
+                        if (entry.isIntersecting) {
 
-                    if ("up" === direction && drawSettings.svgRestart) {
-                        targettimeLine.reverse();
+                            targettimeLine.play();
 
-                    }
-
+                            if ("up" === window.paDirection && drawSettings.svgRestart) {
+                                targettimeLine.reverse();
+                            }
+                        }
+                    });
                 }, {
-                    offset: drawSettings.svgAnimOffset || "50%",
-                    triggerOnce: false
+                    threshold:  parseFloat( (drawSettings.svgAnimOffset || "50%" )) / 100
                 });
 
+                eleObserver.observe($scope[0]);
+
+                // elementorFrontend.waypoint($scope, function (direction) {
+                //     targettimeLine.play();
+
+                //     if ("up" === direction && drawSettings.svgRestart) {
+                //         targettimeLine.reverse();
+
+                //     }
+
+                // }, {
+                //     offset: drawSettings.svgAnimOffset || "50%",
+                //     triggerOnce: false
+                // });
             }
 
         });

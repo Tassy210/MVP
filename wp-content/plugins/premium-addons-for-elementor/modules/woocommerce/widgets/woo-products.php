@@ -214,6 +214,7 @@ class Woo_Products extends Widget_Base {
 		$this->register_content_carousel_section( $pro_skins );
 		$this->register_content_query_section( $pro_skins );
 		$this->register_content_pagination_section( $pro_skins );
+        $this->register_quick_view_settings( $pro_skins );
 		$this->register_content_ribbon_section( $pro_skins );
 
 		// style tab.
@@ -965,6 +966,109 @@ class Woo_Products extends Widget_Base {
 
 		$this->end_controls_section();
 	}
+
+    public function register_quick_view_settings( $pro_skins ) {
+
+        $this->start_controls_section(
+			'section_quick_view_settings',
+			array(
+				'label' => __( 'Quick View Settings', 'premium-addons-for-elementor' ),
+			)
+		);
+
+        $this->add_control(
+			'qv_sale',
+			array(
+				'label'   => __( 'Hide Sale Ribbon', 'premium-addons-for-elementor' ),
+				'type'    => Controls_Manager::SWITCHER,
+				'selectors' => array(
+					'#premium-woo-quick-view-{{ID}} .premium-qv-badge' => 'display: none !important',
+				),
+			)
+		);
+
+        $this->add_control(
+			'qv_rating',
+			array(
+				'label'   => __( 'Hide Product Rating', 'premium-addons-for-elementor' ),
+				'type'    => Controls_Manager::SWITCHER,
+				'selectors' => array(
+					'#premium-woo-quick-view-{{ID}} .star-rating' => 'display: none !important',
+				),
+			)
+		);
+
+        $this->add_control(
+			'qv_price',
+			array(
+				'label'   => __( 'Hide Product Price', 'premium-addons-for-elementor' ),
+				'type'    => Controls_Manager::SWITCHER,
+                'selectors' => array(
+					'#premium-woo-quick-view-{{ID}} .price' => 'display: none',
+				),
+			)
+		);
+
+        $this->add_control(
+			'qv_desc',
+			array(
+				'label'   => __( 'Hide Product Description', 'premium-addons-for-elementor' ),
+				'type'    => Controls_Manager::SWITCHER,
+                'selectors' => array(
+					'#premium-woo-quick-view-{{ID}} .premium-woo-qv-desc' => 'display: none',
+				),
+			)
+		);
+
+        $this->add_control(
+			'qv_atc',
+			array(
+				'label'   => __( 'Hide Call to Action', 'premium-addons-for-elementor' ),
+				'type'    => Controls_Manager::SWITCHER,
+                'selectors' => array(
+					'#premium-woo-quick-view-{{ID}} .premium-woo-atc-button' => 'display: none',
+				),
+			)
+		);
+
+        $this->add_control(
+			'qv_meta',
+			array(
+				'label'   => __( 'Hide Product Meta', 'premium-addons-for-elementor' ),
+				'type'    => Controls_Manager::SWITCHER,
+				'selectors' => array(
+					'#premium-woo-quick-view-{{ID}} .premium-woo-qv-meta' => 'display: none !important',
+				),
+			)
+		);
+
+        $this->add_responsive_control(
+			'qv_display',
+			array(
+				'label'       => __( 'Image/Content Display', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::SELECT,
+				'options'     => array(
+					'inline' => __( 'Inline', 'premium-addons-for-elementor' ),
+					'block'  => __( 'Block', 'premium-addons-for-elementor' ),
+				),
+				'default'     => 'inline',
+				'label_block' => true,
+			)
+		);
+
+        $this->add_control(
+			'qv_hide_responsive',
+			array(
+				'label'   => __( 'Hide On Mobile Devices', 'premium-addons-for-elementor' ),
+				'type'    => Controls_Manager::SWITCHER,
+                'default'=> 'yes',
+                'prefix_class'=> 'premium-qv-hidden-'
+			)
+		);
+
+        $this->end_controls_section();
+
+    }
 
 	/**
 	 * Register content ribbons section.

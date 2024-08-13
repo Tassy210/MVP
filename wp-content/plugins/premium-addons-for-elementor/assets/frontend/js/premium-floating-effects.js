@@ -31,9 +31,9 @@
     }
 
     $(window).on('elementor/frontend/init', function () {
-        var paFloatingEffects =  elementorModules.frontend.handlers.Base.extend({
+        var paFloatingEffects = elementorModules.frontend.handlers.Base.extend({
 
-            onInit: function() {
+            onInit: function () {
 
                 elementorModules.frontend.handlers.Base.prototype.onInit.apply(this, arguments);
 
@@ -48,7 +48,7 @@
                 }
             },
 
-            run: function() {
+            run: function () {
                 var _this = this,
                     eleSettings = this.getEffectSettings();
 
@@ -69,8 +69,8 @@
                 // }
 
                 // unsing IntersectionObserverAPI.
-                var eleObserver = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
+                var eleObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
                         if (entry.isIntersecting) {
                             _this.applyEffects(eleSettings);
                             eleObserver.unobserve(entry.target); // to only excecute the callback func once.
@@ -88,7 +88,7 @@
                 // );
             },
 
-            getEffectSettings: function() {
+            getEffectSettings: function () {
                 var settings = this.getElementSettings();
 
                 var easing = 'steps' === settings.premium_fe_easing ? 'steps(' + settings.premium_fe_ease_step + ')' : settings.premium_fe_easing,
@@ -119,119 +119,119 @@
                 if (translateEnabled) {
                     eleSettings.effectSettings.translate = {
                         'x_param_from': settings.premium_fe_Xtranslate.sizes.from,
-                        'x_param_to'  : settings.premium_fe_Xtranslate.sizes.to,
+                        'x_param_to': settings.premium_fe_Xtranslate.sizes.to,
                         'y_param_from': settings.premium_fe_Ytranslate.sizes.from,
-                        'y_param_to'  : settings.premium_fe_Ytranslate.sizes.to,
-                        'duration'    : settings.premium_fe_trans_duration.size,
-                        'delay'       : settings.premium_fe_trans_delay.size,
+                        'y_param_to': settings.premium_fe_Ytranslate.sizes.to,
+                        'duration': settings.premium_fe_trans_duration.size,
+                        'delay': settings.premium_fe_trans_delay.size,
                     }
                 }
 
                 if (rotateEnabled) {
                     eleSettings.effectSettings.rotate = {
                         'x_param_from': settings.premium_fe_Xrotate.sizes.from,
-                        'x_param_to'  : settings.premium_fe_Xrotate.sizes.to,
+                        'x_param_to': settings.premium_fe_Xrotate.sizes.to,
                         'y_param_from': settings.premium_fe_Yrotate.sizes.from,
-                        'y_param_to'  : settings.premium_fe_Yrotate.sizes.to,
+                        'y_param_to': settings.premium_fe_Yrotate.sizes.to,
                         'z_param_from': settings.premium_fe_Zrotate.sizes.from,
-                        'z_param_to'  : settings.premium_fe_Zrotate.sizes.to,
-                        'duration'    : settings.premium_fe_rotate_duration.size,
-                        'delay'       : settings.premium_fe_rotate_delay.size,
+                        'z_param_to': settings.premium_fe_Zrotate.sizes.to,
+                        'duration': settings.premium_fe_rotate_duration.size,
+                        'delay': settings.premium_fe_rotate_delay.size,
                     }
                 }
 
                 if (scaleEnabled) {
                     eleSettings.effectSettings.scale = {
                         'x_param_from': settings.premium_fe_Xscale.sizes.from,
-                        'x_param_to'  : settings.premium_fe_Xscale.sizes.to,
+                        'x_param_to': settings.premium_fe_Xscale.sizes.to,
                         'y_param_from': settings.premium_fe_Yscale.sizes.from,
-                        'y_param_to'  : settings.premium_fe_Yscale.sizes.to,
-                        'duration'    : settings.premium_fe_scale_duration.size,
-                        'delay'       : settings.premium_fe_scale_delay.size,
+                        'y_param_to': settings.premium_fe_Yscale.sizes.to,
+                        'duration': settings.premium_fe_scale_duration.size,
+                        'delay': settings.premium_fe_scale_delay.size,
                     }
                 }
 
                 if (skewEnabled) {
                     eleSettings.effectSettings.skew = {
                         'x_param_from': settings.premium_fe_Xskew.sizes.from,
-                        'x_param_to'  : settings.premium_fe_Xskew.sizes.to,
+                        'x_param_to': settings.premium_fe_Xskew.sizes.to,
                         'y_param_from': settings.premium_fe_Yskew.sizes.from,
-                        'y_param_to'  : settings.premium_fe_Yskew.sizes.to,
-                        'duration'    : settings.premium_fe_skew_duration.size,
-                        'delay'       : settings.premium_fe_skew_delay.size,
+                        'y_param_to': settings.premium_fe_Yskew.sizes.to,
+                        'duration': settings.premium_fe_skew_duration.size,
+                        'delay': settings.premium_fe_skew_delay.size,
                     }
                 }
 
                 if (PremiumFESettings.papro_installed) {
                     if (opacityEnabled) {
                         eleSettings.effectSettings.opacity = {
-                            'from'    : settings.premium_fe_opacity.sizes.from / 100,
-                            'to'      : settings.premium_fe_opacity.sizes.to / 100,
+                            'from': settings.premium_fe_opacity.sizes.from / 100,
+                            'to': settings.premium_fe_opacity.sizes.to / 100,
                             'duration': settings.premium_fe_opacity_duration.size,
-                            'delay'   : settings.premium_fe_opacity_delay.size
+                            'delay': settings.premium_fe_opacity_delay.size
                         };
                     }
 
                     if (bgColorEnabled) {
                         eleSettings.effectSettings.bgColor = {
-                            'from'    : settings.premium_fe_bg_color_from,
-                            'to'      : settings.premium_fe_bg_color_to,
+                            'from': settings.premium_fe_bg_color_from,
+                            'to': settings.premium_fe_bg_color_to,
                             'duration': settings.premium_fe_bg_color_duration.size,
-                            'delay'   : settings.premium_fe_bg_color_delay.size,
+                            'delay': settings.premium_fe_bg_color_delay.size,
                         }
                     }
 
                     if (blurEnabled) {
                         eleSettings.effectSettings.blur = {
-                            'from'    : 'blur(' + settings.premium_fe_blur_val.sizes.from + 'px)',
-                            'to'      : 'blur(' + settings.premium_fe_blur_val.sizes.to + 'px)',
+                            'from': 'blur(' + settings.premium_fe_blur_val.sizes.from + 'px)',
+                            'to': 'blur(' + settings.premium_fe_blur_val.sizes.to + 'px)',
                             'duration': settings.premium_fe_blur_duration.size,
-                            'delay'   : settings.premium_fe_blur_delay.size,
+                            'delay': settings.premium_fe_blur_delay.size,
                         }
                     }
 
                     if (contrastEnabled) {
                         eleSettings.effectSettings.contrast = {
-                            'from'    : 'contrast(' + settings.premium_fe_contrast_val.sizes.from + '%)',
-                            'to'      : 'contrast(' + settings.premium_fe_contrast_val.sizes.to + '%)',
+                            'from': 'contrast(' + settings.premium_fe_contrast_val.sizes.from + '%)',
+                            'to': 'contrast(' + settings.premium_fe_contrast_val.sizes.to + '%)',
                             'duration': settings.premium_fe_contrast_duration.size,
-                            'delay'   : settings.premium_fe_contrast_delay.size,
+                            'delay': settings.premium_fe_contrast_delay.size,
                         }
                     }
 
                     if (gScaleEnabled) {
                         eleSettings.effectSettings.gScale = {
-                            'from'    : 'grayscale(' + settings.premium_fe_gScale_val.sizes.from + '%)',
-                            'to'      : 'grayscale(' + settings.premium_fe_gScale_val.sizes.to + '%)',
+                            'from': 'grayscale(' + settings.premium_fe_gScale_val.sizes.from + '%)',
+                            'to': 'grayscale(' + settings.premium_fe_gScale_val.sizes.to + '%)',
                             'duration': settings.premium_fe_gScale_duration.size,
-                            'delay'   : settings.premium_fe_gScale_delay.size,
+                            'delay': settings.premium_fe_gScale_delay.size,
                         }
                     }
 
                     if (hueEnabled) {
                         eleSettings.effectSettings.hue = {
-                            'from'    : 'hue-rotate(' + settings.premium_fe_hue_val.sizes.from + 'deg)',
-                            'to'      : 'hue-rotate(' + settings.premium_fe_hue_val.sizes.to + 'deg)',
+                            'from': 'hue-rotate(' + settings.premium_fe_hue_val.sizes.from + 'deg)',
+                            'to': 'hue-rotate(' + settings.premium_fe_hue_val.sizes.to + 'deg)',
                             'duration': settings.premium_fe_hue_duration.size,
-                            'delay'   : settings.premium_fe_hue_delay.size,
+                            'delay': settings.premium_fe_hue_delay.size,
                         }
                     }
 
                     if (brightEnabled) {
                         eleSettings.effectSettings.bright = {
-                            'from'    : 'brightness(' + settings.premium_fe_brightness_val.sizes.from + '%)',
-                            'to'      : 'brightness(' + settings.premium_fe_brightness_val.sizes.to + '%)',
+                            'from': 'brightness(' + settings.premium_fe_brightness_val.sizes.from + '%)',
+                            'to': 'brightness(' + settings.premium_fe_brightness_val.sizes.to + '%)',
                             'duration': settings.premium_fe_brightness_duration.size,
-                            'delay'   : settings.premium_fe_brightness_delay.size,
+                            'delay': settings.premium_fe_brightness_delay.size,
                         }
                     }
 
                     if (satEnabled) {
                         eleSettings.effectSettings.sat = {
-                            'from'    : 'saturate(' + settings.premium_fe_saturate_val.sizes.from + '%)',
-                            'to'      : 'saturate(' + settings.premium_fe_saturate_val.sizes.to + '%)',
+                            'from': 'saturate(' + settings.premium_fe_saturate_val.sizes.from + '%)',
+                            'to': 'saturate(' + settings.premium_fe_saturate_val.sizes.to + '%)',
                             'duration': settings.premium_fe_saturate_duration.size,
-                            'delay'   : settings.premium_fe_saturate_delay.size,
+                            'delay': settings.premium_fe_saturate_delay.size,
                         }
                     }
 
@@ -240,7 +240,7 @@
                 return eleSettings;
             },
 
-            applyEffects: function(eleSettings) {
+            applyEffects: function (eleSettings) {
                 var settings = eleSettings,
                     effectSettings = settings.effectSettings,
                     $widgetContainer = this.$element.find('.elementor-widget-container')[0],
@@ -262,16 +262,16 @@
 
                 if (effectSettings.translate) {
                     var translate = effectSettings.translate,
-                    x_translate = {
-                        value: [translate.x_param_from || 0, translate.x_param_to || 0],
-                        duration: translate.duration,
-                        delay: translate.delay || 0
-                    },
-                    y_translate = {
-                        value: [translate.y_param_from || 0, translate.y_param_to || 0],
-                        duration: translate.duration,
-                        delay: translate.delay || 0,
-                    };
+                        x_translate = {
+                            value: [translate.x_param_from || 0, translate.x_param_to || 0],
+                            duration: translate.duration,
+                            delay: translate.delay || 0
+                        },
+                        y_translate = {
+                            value: [translate.y_param_from || 0, translate.y_param_to || 0],
+                            duration: translate.duration,
+                            delay: translate.delay || 0,
+                        };
 
                     animeSettings.translateX = x_translate;
                     animeSettings.translateY = y_translate;
@@ -279,21 +279,21 @@
 
                 if (effectSettings.rotate) {
                     var rotate = effectSettings.rotate,
-                    x_rotate = {
-                        duration: rotate.duration,
-                        delay: rotate.delay || 0,
-                        value: [rotate.x_param_from || 0, rotate.x_param_to || 0],
-                    },
-                    y_rotate = {
-                        duration: rotate.duration,
-                        delay: rotate.delay || 0,
-                        value: [rotate.y_param_from || 0, rotate.y_param_to || 0],
-                    },
-                    z_rotate = {
-                        duration: rotate.duration,
-                        delay: rotate.delay || 0,
-                        value: [rotate.z_param_from || 0, rotate.z_param_to || 0],
-                    };
+                        x_rotate = {
+                            duration: rotate.duration,
+                            delay: rotate.delay || 0,
+                            value: [rotate.x_param_from || 0, rotate.x_param_to || 0],
+                        },
+                        y_rotate = {
+                            duration: rotate.duration,
+                            delay: rotate.delay || 0,
+                            value: [rotate.y_param_from || 0, rotate.y_param_to || 0],
+                        },
+                        z_rotate = {
+                            duration: rotate.duration,
+                            delay: rotate.delay || 0,
+                            value: [rotate.z_param_from || 0, rotate.z_param_to || 0],
+                        };
 
                     animeSettings.rotateX = x_rotate;
                     animeSettings.rotateY = y_rotate;
@@ -302,16 +302,16 @@
 
                 if (effectSettings.scale) {
                     var scale = effectSettings.scale,
-                    x_scale = {
-                        value: [scale.x_param_from || 0, scale.x_param_to || 0],
-                        duration: scale.duration,
-                        delay: scale.delay || 0
-                    },
-                    y_scale = {
-                        value: [scale.y_param_from || 0, scale.y_param_to || 0],
-                        duration: scale.duration,
-                        delay: scale.delay || 0,
-                    };
+                        x_scale = {
+                            value: [scale.x_param_from || 0, scale.x_param_to || 0],
+                            duration: scale.duration,
+                            delay: scale.delay || 0
+                        },
+                        y_scale = {
+                            value: [scale.y_param_from || 0, scale.y_param_to || 0],
+                            duration: scale.duration,
+                            delay: scale.delay || 0,
+                        };
 
                     animeSettings.scaleX = x_scale;
                     animeSettings.scaleY = y_scale;
@@ -319,16 +319,16 @@
 
                 if (effectSettings.skew) {
                     var skew = effectSettings.skew,
-                    x_skew = {
-                        value: [skew.x_param_from || 0, skew.x_param_to || 0],
-                        duration: skew.duration,
-                        delay: skew.delay || 0
-                    },
-                    y_skew = {
-                        value: [skew.y_param_from || 0, skew.y_param_to || 0],
-                        duration: skew.duration,
-                        delay: skew.delay || 0,
-                    };
+                        x_skew = {
+                            value: [skew.x_param_from || 0, skew.x_param_to || 0],
+                            duration: skew.duration,
+                            delay: skew.delay || 0
+                        },
+                        y_skew = {
+                            value: [skew.y_param_from || 0, skew.y_param_to || 0],
+                            duration: skew.duration,
+                            delay: skew.delay || 0,
+                        };
 
                     animeSettings.skewX = x_skew;
                     animeSettings.skewY = y_skew;

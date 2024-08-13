@@ -81,10 +81,10 @@
                     }
                     ],
                     rtl: rtl ? true : false,
-                    autoplaySpeed: settings.speed || 5000,
+                    speed: settings.carousel_speed,
                     prevArrow: settings.carousel_arrows ? prevArrow : '',
                     nextArrow: settings.carousel_arrows ? nextArrow : '',
-                    centerMode: settings.carousel_center,
+                    centerMode: 'yes' === settings.carousel_center,
                     centerPadding: settings.carousel_spacing + "px",
 
                 });

@@ -5,7 +5,7 @@ Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_c
 Requires at least: 5.0
 Tested Up To: 6.6.1
 Requires PHP: 7.0
-Stable Tag: 4.10.39
+Stable Tag: 4.10.40
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -234,6 +234,11 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 14. Premium Progress Bar Widget
 
 == Changelog ==
+
+= 4.10.40 =
+
+- New: Quick View in Woo Products Listing widget now fully customizable - [here](https://premiumaddons.com/elementor-woocommerce-products/).
+- Fixed: Transition Speed and Slides Spacing options not working in Mobile Menu widget.
 
 = 4.10.39 =
 

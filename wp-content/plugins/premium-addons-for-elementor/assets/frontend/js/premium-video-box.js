@@ -73,23 +73,28 @@
                 vidSrc = video.attr("src");
 
                 if ($videoBoxElement.data("play-viewport")) {
-                    elementorFrontend.waypoint($videoBoxElement, function () {
-                        playVideo();
-                    }, {
-                        offset: "100%",
-                        triggerOnce: false
+
+                    var eleObserver = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+
+                            if (entry.isIntersecting) {
+
+                                if ( $videoBoxElement.data("play-reset") ) {
+                                    if ('up' === window.paDirection ) {
+                                        restartVideo();
+                                    } else {
+                                        playVideo();
+                                    }
+
+                                } else {
+                                    playVideo();
+                                }
+                            }
+                        });
                     });
 
-                    if ($videoBoxElement.data("play-reset")) {
-                        elementorFrontend.waypoint($videoBoxElement, function (direction) {
 
-                            if ('up' === direction)
-                                restartVideo();
-                        }, {
-                            offset: "100%",
-                            triggerOnce: false
-                        });
-                    }
+                    eleObserver.observe($videoBoxElement[0]);
                 }
 
             } else {
@@ -100,11 +105,18 @@
 
                     //Check if Autoplay on viewport option is enabled
                     if ($videoBoxElement.data("play-viewport")) {
-                        elementorFrontend.waypoint($videoBoxElement, function () {
-                            playVideo();
+
+                        var eleObserver = new IntersectionObserver(function(entries) {
+                            entries.forEach(function(entry) {
+                                if (entry.isIntersecting) {
+                                    playVideo();
+                                }
+                            });
                         }, {
-                            offset: 'top-in-view'
+                            threshold: "0.5"
                         });
+
+                        eleObserver.observe($videoBoxElement[0]);
                     } else {
                         playVideo();
                     }
@@ -126,7 +138,6 @@
         }
 
         function playVideo() {
-
             if ($videoBoxElement.hasClass("playing")) return;
 
             $videoBoxElement.addClass("playing");
@@ -166,12 +177,10 @@
         }
 
         function restartVideo() {
-
             $videoBoxElement.removeClass("playing");
 
-            $(video).get(0).pause();
+            // $(video).get(0).pause();
             $(video).get(0).currentTime = 0;
-
         }
 
         function triggerLightbox($container, type) {
@@ -183,7 +192,6 @@
         }
 
         function stickyOption() {
-
             var stickyDesktop = $videoBoxElement.data('hide-desktop'),
                 stickyTablet = $videoBoxElement.data('hide-tablet'),
                 stickyMobile = $videoBoxElement.data('hide-mobile'),
@@ -200,14 +208,11 @@
 
             });
 
-            //Make sure Elementor Waypoint is defined
-            if (typeof elementorFrontend.waypoint !== 'undefined') {
+            var stickyWaypoint = new IntersectionObserver( function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
 
-                var stickyWaypoint = elementorFrontend.waypoint(
-                    $videoBoxElement,
-                    function (direction) {
-                        if ('down' === direction) {
-
+                        if ('down' === window.paDirection ) {
                             $videoBoxElement.removeClass('premium-video-box-sticky-hide').addClass('premium-video-box-sticky-apply premium-video-box-filter-sticky');
 
                             //Fix conflict with Elementor motion effects
@@ -239,9 +244,7 @@
 
                                 }, animationDelay * 1000);
                             }
-
                         } else {
-
                             $videoBoxElement.removeClass('premium-video-box-sticky-apply  premium-video-box-filter-sticky').addClass('premium-video-box-sticky-hide');
 
                             //Fix conflict with Elementor motion effects
@@ -263,19 +266,21 @@
                             });
 
                             $videoInnerContainer.removeClass("animated " + $videoInnerContainer.data("video-animation"));
+
                         }
-                    }, {
-                    offset: 0 + '%',
-                    triggerOnce: false
-                }
-                );
-            }
+                    }
+                });
+            }, {
+                threshold: 1 // this should be modified.
+            });
+
+            stickyWaypoint.observe($videoBoxElement[0]);
 
             var closeBtn = $scope.find('.premium-video-box-sticky-close');
 
             closeBtn.off('click.closetrigger').on('click.closetrigger', function (e) {
                 e.stopPropagation();
-                stickyWaypoint[0].disable();
+                stickyWaypoint.unobserve($videoBoxElement[0]);
 
                 $videoBoxElement.removeClass('premium-video-box-sticky-apply premium-video-box-sticky-hide');
 
@@ -292,8 +297,6 @@
                     $videoBoxElement.find(':first-child').eq(0).addClass('premium-video-box-mask-media');
                     $videoImageContainer.addClass('premium-video-box-mask-media');
                 }
-
-
             });
 
             checkResize(stickyWaypoint);
@@ -307,21 +310,28 @@
             });
 
             function checkResize(stickyWaypoint) {
+
                 var currentDeviceMode = elementorFrontend.getCurrentDeviceMode();
 
-                if ('' !== stickyDesktop && currentDeviceMode == stickyDesktop) {
-                    disableSticky(stickyWaypoint);
-                } else if ('' !== stickyTablet && currentDeviceMode == stickyTablet) {
-                    disableSticky(stickyWaypoint);
-                } else if ('' !== stickyMobile && currentDeviceMode == stickyMobile) {
+                if ([stickyDesktop, stickyTablet, stickyMobile].includes(currentDeviceMode)) {
                     disableSticky(stickyWaypoint);
                 } else {
-                    stickyWaypoint[0].enable();
+                    stickyWaypoint.observe($videoBoxElement[0])
                 }
+
+                // if ('' !== stickyDesktop && currentDeviceMode == stickyDesktop) {
+                //     disableSticky(stickyWaypoint);
+                // } else if ('' !== stickyTablet && currentDeviceMode == stickyTablet) {
+                //     disableSticky(stickyWaypoint);
+                // } else if ('' !== stickyMobile && currentDeviceMode == stickyMobile) {
+                //     disableSticky(stickyWaypoint);
+                // } else {
+                //     stickyWaypoin[0].enable();
+                // }
             }
 
             function disableSticky(stickyWaypoint) {
-                stickyWaypoint[0].disable();
+                stickyWaypoint.unobserve($videoBoxElement[0]);
                 $videoBoxElement.removeClass('premium-video-box-sticky-apply premium-video-box-sticky-hide');
             }
 
@@ -360,7 +370,6 @@
                     }
                 }
             });
-
         }
 
         function getPrettyPhotoSettings(theme) {

@@ -63,5 +63,5 @@
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/premium-image-scroll.default', PremiumImageScrollHandler);
     });
- })(jQuery);
+})(jQuery);
 

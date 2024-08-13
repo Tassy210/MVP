@@ -11,7 +11,7 @@
             var target = '.premium-title-header';
             $scope.find(target).find('.premium-title-icon, .premium-title-img').addClass('premium-mask-span');
 
-        } else if ('premium-textual-showcase.default' === $scope.data('widget_type') ) {
+        } else if ('premium-textual-showcase.default' === $scope.data('widget_type')) {
             var target = '.pa-txt-sc__effect-min-mask';
 
         } else {
@@ -31,11 +31,11 @@
         });
 
         // unsing IntersectionObserverAPI.
-        var eleObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+        var eleObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
 
-                    if ( txtShowcaseElem.length ) {
+                    if (txtShowcaseElem.length) {
 
                         $(txtShowcaseElem).addClass('premium-mask-active');
 
