@@ -20,7 +20,7 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'wordpress_2' );
+define( 'DB_NAME', 'wordpress' );
 
 /** Database username */
 define( 'DB_USER', 'root' );
@@ -56,6 +56,7 @@ define( 'AUTH_SALT',        '$8OIfvw{PTWyrKeT*!To~Vco!|CWU^& 9hUt.lP6R5`K:[!cOsv
 define( 'SECURE_AUTH_SALT', ' 5NE62.:6weXDPzL4G[!{sc&av$8{T.b*1&zG2zIs<9{d47OHD /(~dDc4Oz($Zr' );
 define( 'LOGGED_IN_SALT',   ';1=SzS:|e>j>y(}FxN8b~$IG4LBnT6qlp0~@qQ^I%;A,$5y] y+[`bLi-gC8%P6m' );
 define( 'NONCE_SALT',       'Y^RfVsO;TrNdYVfi&4D~4*C_4J|k,te8oixR2GP,R59~_r~?o{W7;!L?hyCAX3G4' );
+define('WP_ALLOW_REPAIR', true);
 
 /**#@-*/
 
