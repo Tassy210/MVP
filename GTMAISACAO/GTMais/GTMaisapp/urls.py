@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -11,4 +13,4 @@ urlpatterns = [
     path('projeto/<int:idAcao>/', views.projeto, name='projeto'),
     path('criarAcao/', views.criarAcao, name='criarAcao'),
     path('cidades/<int:idEstado>/', views.cidades_por_estado, name='cidades_por_estado'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

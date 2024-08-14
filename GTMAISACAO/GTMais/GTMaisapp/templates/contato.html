@@ -94,27 +94,16 @@
             <div class="circle">
                 <img src="{% static "img/gtmais.png" %}" alt="Imagem no Círculo">
             </div>
-    
-            <form action="/submit" method="post">
-                <div class="form-group">
-                    <input type="text" id="nome" name="nome" placeholder="Nome" required>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group" style="color:white;">
+                  
+                    {{ contato_form.as_p }}
                 </div>
-                <div class="form-group">
-                    <input type="tel" id="telefone" name="telefone"  placeholder="Telefone" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email"  placeholder="E-mail" required>
-                </div>   
-                <div class="form-group">
-                    <input type="text" id="Titulo" name="Titulo" placeholder="Titulo da demanda" required>
-                </div>
-                <div class="form-group">
-                    <textarea id="descricao" name="descricao" placeholder="NOS CONTE O SEU PROBLEMA" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Enviar</button>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <button type="submit">Enviar Contato</button>
+                    </div>
+                </form>
         </div>
     </div>
 

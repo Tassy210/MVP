@@ -1,0 +1,6 @@
+Olá,
+
+Este é um e-mail de exemplo enviado usando Django.
+
+Atenciosamente,
+Sua Equipe

@@ -1,4 +1,4 @@
-# GTMaisapp/management/commands/cidade.py
+
 import requests
 from django.core.management.base import BaseCommand
 from GTMaisapp.models import Estados, Cidades
@@ -19,7 +19,6 @@ class Command(BaseCommand):
                 estado_sigla = estado_data.get('sigla', 'Sigla não disponível')
                 estado_nome = estado_data.get('nome', 'Nome não disponível')
                 
-                # Verifica se o estado já existe no banco de dados
                 estado, created = Estados.objects.get_or_create(UF=estado_sigla, defaults={'Estado': estado_nome})
                 
                 if created:
@@ -29,7 +28,6 @@ class Command(BaseCommand):
                 
                 cidade_nome = municipio.get('nome', 'Nome não disponível')
                 
-                # Verifica se a cidade já existe no banco de dados
                 cidade, created = Cidades.objects.get_or_create(Cidade=cidade_nome, UF=estado)
                 
                 if created:

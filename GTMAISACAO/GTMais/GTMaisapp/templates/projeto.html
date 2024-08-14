@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="image-container">
-    <img src="{% static 'img/projeto1.png' %}" width="100%" alt="Mapa">
+    <img src="{{ projeto.imagem.url  }}" alt="{{ projeto.TituloAcao }}">
     <div class="text-overlay">
         {{ projeto.TituloAcao }}    
         <p> Coordenadores: {{ projeto.coordenadorAcao }}</p>
@@ -14,15 +14,15 @@
 </div>
 <div style="padding:0 200px;">
     <div>
-        <img src="{% static 'img/projeto1.png' %}" class="float-img" alt="Mapa"/>
     
-        <h2>O que fazemos?</h2><br> 
+        <h2>O que fazemos?</h2>
+        <p style="font-size:15px; color:grey;">Ultima Modificação em: {{ projeto.dtModificacao }} <br> 
         <p>{{ projeto.descricao }}</p> 
     </div>
 </div>
 <div style="padding:0 200px;">
     <h3><b>Como fazer parte do projeto?</b></h3>
-    <p>Entre em contato conosco através do seguinte e-mail: {{ projeto.coordenadorAcao }}</p>
+    <p>Entre em contato conosco através do seguinte e-mail: {{ projeto.contato }}</p>
     <p class="icon">
         <h3>
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">

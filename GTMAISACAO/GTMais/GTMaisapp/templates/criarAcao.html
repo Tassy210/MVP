@@ -1,8 +1,5 @@
 {% extends "menu.html" %}
 {% load static %}
-{% load livereload_tags %}
-{% livereload_script %}
-{% load icons %}
 
 {% block content %}
 
@@ -55,34 +52,57 @@
 </style>
 
 <body>
-    <h1>Criar Ação de Extensão</h1>
-    <form method="post">
+    <center><h1>Criar Ação de Extensão</h1></center>
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
+      
         <button type="submit">Salvar</button>
     </form>
 
-    <script>
-      document.getElementById('estado').addEventListener('change', function() {
-          var idEstado = this.value;
-          var cidadeSelect = document.getElementById('cidade');
-          cidadeSelect.innerHTML = '<option value="">Selecione uma cidade</option>';
-  
-          if (idEstado) {
-              fetch(`/cidades/${idEstado}/`)
-                  .then(response => response.json())
-                  .then(data => {
-                    console.log('Dados recebidos:', data);
-                      data.cidades.forEach(cidade => {
-                          var option = document.createElement('option');
-                          option.value = cidade.idCidade;
-                          option.textContent = cidade.Cidade;
-                          cidadeSelect.appendChild(option);
-                      });
-                  })    .catch(error => console.error('Erro ao carregar cidades:', error));
-          }
-      });
-  </script>
-  
+    {% if form.errors %}
+    <div class="error">
+        <ul>
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <li>{{ field }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
 
+    {% if formEdicao.errors %}
+    <div class="error">
+        <ul>
+            {% for field, errors in formEdicao.errors.items %}
+                {% for error in errors %}
+                    <li>{{ field }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <script>
+        document.getElementById('estado').addEventListener('change', function() {
+            var idEstado = this.value;
+            var cidadeSelect = document.getElementById('cidade');
+            cidadeSelect.innerHTML = '<option value="">Selecione uma cidade</option>';
+
+            if (idEstado) {
+                fetch(`/cidades/${idEstado}/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.cidades.forEach(cidade => {
+                            var option = document.createElement('option');
+                            option.value = cidade.idCidade;
+                            option.textContent = cidade.Cidade;
+                            cidadeSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao carregar cidades:', error));
+            }
+        });
+    </script>
 {% endblock %}

@@ -37,9 +37,14 @@
         <div class="selects">
             <div>
                 <p>Localidade</p>
-                <select name="localizacao" id="localizacao">
-                    <option value="">Nacional</option>
-                    <option value="sala">Sala</option>
+                <select name="Estados" id="Estados">
+                    <option value="">Nacional
+                    </option>
+                    {% for estado in estados %}
+                    <option value="{{ estado.idEstado }}" {% if estado.idEstado|stringformat:"s" == search_estado %}selected{% endif %}>
+                        {{ estado.Estado }}
+                    </option>
+                    {% endfor %}
                 </select>
                 </div>
                 <div>
@@ -110,7 +115,7 @@
             <a href="{% url 'projeto' acao.idAcao %}">
 
             <div class="containerproject">
-            <img src="{% static 'img/projeto1.png' %}" alt="Mapa">
+                <img src="{{ acao.imagem.url  }}" alt="{{ acao.TituloAcao }}">
             <div class="text">
              
                 <p style="font-size:24px;">{{ acao.TituloAcao }}</p>

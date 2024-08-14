@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Formulário</title>
+</head>
+<body>
+    <h1>Dados do Formulário</h1>
+    <ul>
+        <li><strong>Título da Ação:</strong> {{ form_data.TituloAcao }}</li>
+        <li><strong>Coordenador:</strong> {{ form_data.coordenadorAcao }}</li>
+        <li><strong>Aluno:</strong> {{ form_data.alunoAcao }}</li>
+        <li><strong>Descrição:</strong> {{ form_data.descricao }}</li>
+        <li><strong>Tipo:</strong> {{ form_data.idTipo }}</li>
+        <li><strong>Situação:</strong> {{ form_data.idSituacao }}</li>
+        <li><strong>Data de Criação:</strong> {{ form_data.dtCriacao }}</li>
+        <li><strong>Data de Modificação:</strong> {{ form_data.dtModificacao }}</li>
+        <li><strong>Data de Início:</strong> {{ form_data.dtInicio }}</li>
+        <li><strong>Data de Fim:</strong> {{ form_data.dtFim }}</li>
+        <li><strong>CEP:</strong> {{ form_data.CEP }}</li>
+        <li><strong>Estado:</strong> {{ form_data.idEstado }}</li>
+        <li><strong>Cidade:</strong> {{ form_data.idCidade }}</li>
+        <li><strong>Número:</strong> {{ form_data.Numero }}</li>
+        <li><strong>Complemento:</strong> {{ form_data.Complemento }}</li>
+        <li><strong>Bairro:</strong> {{ form_data.Bairro }}</li>
+        <li><strong>Rua:</strong> {{ form_data.Rua }}</li>
+    </ul>
+</body>
+</html>
