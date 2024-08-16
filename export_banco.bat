@@ -1,0 +1,1 @@
+mysqldump -u root -p wordpress > wordpress_dump.sql
