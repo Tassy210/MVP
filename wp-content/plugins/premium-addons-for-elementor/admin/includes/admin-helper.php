@@ -124,6 +124,11 @@ class Admin_Helper {
 					}
 				}
 			}
+
+            if( self::check_user_can( 'install_plugins' ) ) {
+                Feedback::get_instance();
+            }
+
 		}
 
 		if ( is_user_logged_in() && self::check_user_can( 'manage_options' ) ) {

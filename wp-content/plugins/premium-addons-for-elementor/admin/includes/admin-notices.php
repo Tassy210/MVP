@@ -303,15 +303,15 @@ class Admin_Notices {
 	public function admin_enqueue_scripts() {
 
 		wp_enqueue_script(
-			'pa-notice',
-			PREMIUM_ADDONS_URL . 'admin/assets/js/pa-notice.js',
+			'pa-dashboard',
+			PREMIUM_ADDONS_URL . 'admin/assets/js/pa-dashboard.js',
 			array( 'jquery' ),
 			PREMIUM_ADDONS_VERSION,
 			true
 		);
 
 		wp_localize_script(
-			'pa-notice',
+			'pa-dashboard',
 			'PaNoticeSettings',
 			array(
 				'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),

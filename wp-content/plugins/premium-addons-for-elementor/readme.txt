@@ -5,7 +5,7 @@ Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_c
 Requires at least: 5.0
 Tested Up To: 6.6.1
 Requires PHP: 7.0
-Stable Tag: 4.10.40
+Stable Tag: 4.10.43
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -234,6 +234,18 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 14. Premium Progress Bar Widget
 
 == Changelog ==
+
+= 4.10.43 =
+
+- Fixed: PHP warnings on plugin activation due to Dynamic Assets Generate feature.
+
+= 4.10.42 =
+
+- Fixed: Security issue in Animated Text widget.
+
+= 4.10.41 =
+
+- Tweak: Added feedback form on plugin deactivation.
 
 = 4.10.40 =
 

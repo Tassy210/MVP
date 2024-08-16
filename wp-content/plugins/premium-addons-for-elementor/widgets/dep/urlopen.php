@@ -47,7 +47,12 @@ if ( ! function_exists( 'rplg_urlopen' ) ) {
 
 	/*-------------------------------- curl --------------------------------*/
 	function _rplg_curl_urlopen( $url, $postdata, $headers, &$response ) {
-		$c            = curl_init( $url );
+		$c = curl_init( $url );
+
+		if ( ! $c ) {
+			return false; // Handle the error if curl_init fails
+		}
+
 		$postdata_str = rplg_get_query_string( $postdata );
 
 		$c_options = array(
@@ -58,29 +63,48 @@ if ( ! function_exists( 'rplg_urlopen' ) ) {
 			CURLOPT_HTTPHEADER     => array_merge( array( 'Expect:' ), $headers ),
 			CURLOPT_TIMEOUT        => RPLG_SOCKET_TIMEOUT,
 		);
+
 		if ( $postdata ) {
 			$c_options[ CURLOPT_POSTFIELDS ] = $postdata_str;
 		}
+
 		curl_setopt_array( $c, $c_options );
 
 		$open_basedir = ini_get( 'open_basedir' );
 		if ( empty( $open_basedir ) ) {
 			curl_setopt( $c, CURLOPT_FOLLOWLOCATION, true );
 		}
+
 		curl_setopt( $c, CURLOPT_SSL_VERIFYPEER, false );
 
 		$data = curl_exec( $c );
+
+		if ( $data === false ) {
+			curl_close( $c );
+			return false; // Handle the error if curl_exec fails
+		}
 
 		// cURL automatically handles Proxy rewrites, remove the "HTTP/1.0 200 Connection established" string
 		if ( stripos( $data, "HTTP/1.0 200 Connection established\r\n\r\n" ) !== false ) {
 			$data = str_ireplace( "HTTP/1.0 200 Connection established\r\n\r\n", '', $data );
 		}
 
-		list($resp_headers, $response['data']) = explode( "\r\n\r\n", $data, 2 );
+		$parts = explode( "\r\n\r\n", $data, 2 );
+
+		if ( ! isset( $parts[0] ) || empty( $parts[0] ) ) {
+			curl_close( $c );
+			return false;
+		}
+
+		$resp_headers     = $parts[0];
+		$response['data'] = $parts[1];
 
 		$response['headers'] = _rplg_get_response_headers( $resp_headers, $response );
 		$response['code']    = curl_getinfo( $c, CURLINFO_HTTP_CODE );
+
 		curl_close( $c );
+
+		return $response;
 	}
 
 	/*-------------------------------- fopen --------------------------------*/
@@ -132,80 +156,92 @@ if ( ! function_exists( 'rplg_urlopen' ) ) {
 
 	/*-------------------------------- fsockpen --------------------------------*/
 	function _rplg_fsockopen_urlopen( $url, $postdata, $headers, &$response ) {
-		$buf          = '';
-		$req          = '';
-		$length       = 0;
-		$postdata_str = rplg_get_query_string( $postdata );
-		$url_pieces   = parse_url( $url );
-		$host         = $url_pieces['host'];
+        $buf = '';
+        $req = '';
+        $length = 0;
 
-		if ( ! isset( $url_pieces['port'] ) ) {
-			switch ( $url_pieces['scheme'] ) {
-				case 'http':
-					$url_pieces['port'] = 80;
-					break;
-				case 'https':
-					$url_pieces['port'] = 443;
-					$host               = 'ssl://' . $url_pieces['host'];
-					break;
-			}
-		}
+        $postdata_str = rplg_get_query_string( $postdata );
+        $url_pieces = parse_url( $url );
 
-		if ( ! isset( $url_pieces['path'] ) ) {
-			$url_pieces['path'] = '/'; }
+        if ( !isset( $url_pieces['host'] ) ) {
+            return false; // Return false if the URL is invalid
+        }
 
-		if ( ( $url_pieces['port'] == 80 && $url_pieces['scheme'] == 'http' ) ||
-			( $url_pieces['port'] == 443 && $url_pieces['scheme'] == 'https' ) ) {
-			$req_host = $url_pieces['host'];
-		} else {
-			$req_host = $url_pieces['host'] . ':' . $url_pieces['port'];
-		}
+        $host = $url_pieces['host'];
 
-		$fp = @fsockopen( $host, $url_pieces['port'], $errno, $errstr, RPLG_SOCKET_TIMEOUT );
-		if ( ! $fp ) {
-			return false; }
+        if ( !isset( $url_pieces['port'] ) ) {
+            switch ( $url_pieces['scheme'] ) {
+                case 'http':
+                    $url_pieces['port'] = 80;
+                    break;
+                case 'https':
+                    $url_pieces['port'] = 443;
+                    $host = 'ssl://' . $url_pieces['host'];
+                    break;
+                default:
+                    return false; // Return false if the scheme is unsupported
+            }
+        }
 
-		$path = $url_pieces['path'];
-		if ( isset( $url_pieces['query'] ) ) {
-			$path .= '?' . $url_pieces['query'];
-		}
+        $url_pieces['path'] = $url_pieces['path'] ?? '/';
+        $req_host = ( $url_pieces['port'] == 80 && $url_pieces['scheme'] == 'http' ) ||
+                    ( $url_pieces['port'] == 443 && $url_pieces['scheme'] == 'https' ) ?
+                    $url_pieces['host'] : $url_pieces['host'] . ':' . $url_pieces['port'];
 
-		$req .= ( $postdata_str ? 'POST' : 'GET' ) . ' ' . $path . " HTTP/1.1\r\n";
-		$req .= 'Host: ' . $req_host . "\r\n";
-		$req .= rplg_get_http_headers_for_request( $postdata_str, $headers );
-		if ( $postdata_str ) {
-			$req .= "\r\n\r\n" . $postdata_str;
-		}
-		$req .= "\r\n\r\n";
+        $fp = @fsockopen( $host, $url_pieces['port'], $errno, $errstr, RPLG_SOCKET_TIMEOUT );
+        if ( !$fp ) {
+            return false; // Handle error if fsockopen fails
+        }
 
-		fwrite( $fp, $req );
-		while ( ! feof( $fp ) ) {
-			$buf .= fgets( $fp, 4096 );
-		}
+        $path = $url_pieces['path'] . ( isset( $url_pieces['query'] ) ? '?' . $url_pieces['query'] : '' );
+        $req .= ( $postdata_str ? 'POST' : 'GET' ) . " $path HTTP/1.1\r\n";
+        $req .= "Host: $req_host\r\n";
+        $req .= rplg_get_http_headers_for_request( $postdata_str, $headers );
+        if ( $postdata_str ) {
+            $req .= "\r\n\r\n" . $postdata_str;
+        }
+        $req .= "\r\n\r\n";
 
-		list($headers, $response['data']) = explode( "\r\n\r\n", $buf, 2 );
+        fwrite( $fp, $req );
 
-		$headers = _rplg_get_response_headers( $headers, $response );
+        while ( !feof( $fp ) ) {
+            $buf .= fgets( $fp, 4096 );
+        }
+        fclose( $fp ); // Close the connection after reading
 
-		if ( isset( $headers['transfer-encoding'] ) && 'chunked' == strtolower( $headers['transfer-encoding'] ) ) {
-			$chunk_data  = $response['data'];
-			$joined_data = '';
-			while ( true ) {
-				list($chunk_length, $chunk_data) = explode( "\r\n", $chunk_data, 2 );
-				$chunk_length                    = hexdec( $chunk_length );
-				if ( ! $chunk_length || ! strlen( $chunk_data ) ) {
-					break; }
+        $parts = explode( "\r\n\r\n", $buf, 2 );
 
-				$joined_data .= substr( $chunk_data, 0, $chunk_length );
-				$chunk_data   = substr( $chunk_data, $chunk_length + 1 );
-				$length      += $chunk_length;
-			}
-			$response['data'] = $joined_data;
-		} else {
-			$length = $headers['content-length'];
-		}
-		$response['headers'] = $headers;
-	}
+        if ( !isset( $parts[1] ) ) {
+            return false; // Handle case where response body is missing
+        }
+
+        $headers = _rplg_get_response_headers( $parts[0], $response );
+        $response['data'] = $parts[1];
+
+        if ( isset( $headers['transfer-encoding'] ) && strtolower( $headers['transfer-encoding'] ) === 'chunked' ) {
+            $chunk_data = $response['data'];
+            $joined_data = '';
+
+            while ( true ) {
+                list( $chunk_length, $chunk_data ) = explode( "\r\n", $chunk_data, 2 );
+                $chunk_length = hexdec( $chunk_length );
+                if ( !$chunk_length || !strlen( $chunk_data ) ) {
+                    break;
+                }
+
+                $joined_data .= substr( $chunk_data, 0, $chunk_length );
+                $chunk_data = substr( $chunk_data, $chunk_length + 2 ); // Add 2 for \r\n after chunk
+                $length += $chunk_length;
+            }
+
+            $response['data'] = $joined_data;
+        } else {
+            $length = $headers['content-length'] ?? strlen( $response['data'] );
+        }
+
+        $response['headers'] = $headers;
+        return true; // Return true to indicate success
+    }
 
 	/*-------------------------------- helpers --------------------------------*/
 	function rplg_get_query_string( $params ) {

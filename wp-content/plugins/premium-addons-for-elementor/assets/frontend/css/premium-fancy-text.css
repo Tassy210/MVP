@@ -333,7 +333,6 @@
   color: transparent !important;
   -webkit-background-clip: text;
   background-clip: text;
-  background-image: url("https://raw.githubusercontent.com/WebDevSimplified/css-challenges/master/Animated%20Text%20Reveal/reveal_background.jpg");
   background-repeat: repeat-x;
   -webkit-animation: pa-reveal 2s forwards ease-in-out infinite;
   animation: pa-reveal 2s forwards ease-in-out infinite;

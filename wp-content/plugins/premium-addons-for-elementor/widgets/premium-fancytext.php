@@ -1344,6 +1344,14 @@ class Premium_Fancytext extends Widget_Base {
 			)
 		);
 
+        if( 'reveal' === $settings['highlight_effect'] ) {
+
+            $image_url = PREMIUM_ADDONS_URL . 'assets/frontend/images/reveal_background.jpg';
+            $this->add_render_attribute( 'text', 'style', "background-image: url('$image_url')" );
+
+
+        }
+
 		?>
 
 			<?php if ( 'lines' !== $settings['highlight_effect'] ) : ?>
