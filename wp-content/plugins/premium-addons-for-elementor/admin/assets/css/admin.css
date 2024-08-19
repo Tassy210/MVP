@@ -2523,6 +2523,10 @@
     background: #f3f3f3;
 }
 
+.options-wrap.pa-info-notice {
+    background-color: #f0f7ff !important;
+}
+
 .pa-deactivation-popup .options-wrap label {
     display: block;
     margin-bottom: 5px;

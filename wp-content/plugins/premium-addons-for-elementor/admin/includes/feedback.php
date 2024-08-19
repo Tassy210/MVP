@@ -171,6 +171,14 @@ class Feedback {
 							</label>
 						</section>
 						<section class="messages-wrap hidden" data-feedback>
+							<?php if( ini_get( 'max_execution_time' ) < 300 ) : 
+								$link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/im-getting-a-blank-page-on-elementor-after-activating-premium-add-ons/', 'plugins-page', 'wp-dash', 'deactivate-form' );
+							?>
+								<p class="options-wrap pa-info-notice">
+									<?php echo __( 'Having Elementor editor not loading issue? Your website PHP limits might be the reason. Here\'s', 'premium-addons-for-elementor') .
+											sprintf( '<a target="_blank" href="%s">%s</a>', $link, __(' how to increase the PHP limits', 'premium-addons-for-elementor') ); ?>
+								</p>
+							<?php endif; ?>
 							<p><?php echo __( 'Would you like to share your e-mail with us so that we can write you back?', 'premium-addons-for-elementor' ); ?></p>
 						</section>
 						<section class="options-wrap hidden" data-feedback>
@@ -197,12 +205,11 @@ class Feedback {
 		// Plugin data
 		$data = array(
 			'deactivated_plugin' => array(
-				'slug'    => $current_plugin['TextDomain'],
-				'name'    => $current_plugin['Name'],
 				'version' => $current_plugin['Version'],
-				'author'  => $current_plugin['AuthorName'],
 				'memory'  => 'Memory: ' . size_format( wp_convert_hr_to_bytes( ini_get( 'memory_limit' ) ) ),
 				'time'    => 'Time: ' . ini_get( 'max_execution_time' ),
+				'install' => 'Activation: ' . get_option( 'pa_install_time' ),
+				'deactivate' => 'Deactivation: ' . date( 'j F, Y', time() )
 			),
 		);
 

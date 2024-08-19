@@ -5,7 +5,7 @@ Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_c
 Requires at least: 5.0
 Tested Up To: 6.6.1
 Requires PHP: 7.0
-Stable Tag: 4.10.43
+Stable Tag: 4.10.44
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -234,6 +234,10 @@ Premium Addonsis 100% Ads Free, Ads can only be detected from Youtube videos, th
 14. Premium Progress Bar Widget
 
 == Changelog ==
+
+= 4.10.44 =
+
+- Tweak: Deactivation form HTML improved.
 
 = 4.10.43 =
 

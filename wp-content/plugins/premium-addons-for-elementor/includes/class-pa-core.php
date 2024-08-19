@@ -108,6 +108,12 @@ if ( ! class_exists( 'PA_Core' ) ) {
 			$expiration = 3600 * 72;
 
 			set_transient( $cache_key, true, $expiration );
+
+			$install_time = get_option( 'pa_install_time' );
+			
+			if( ! $install_time ) {
+				update_option( 'pa_install_time', date( 'j F, Y', time() ) );
+			}
 		}
 
 
