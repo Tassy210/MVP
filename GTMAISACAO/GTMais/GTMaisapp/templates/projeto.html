@@ -5,6 +5,39 @@
 {% load icons %}
 
 {% block content %}
+<style>
+    .containerduplo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; 
+        padding: 10px; 
+  
+    }
+    .left {
+        padding: 10px;
+        width: 45%; 
+    }
+    .right {
+        padding: 10px;
+        width: 45%; 
+        text-align: right; 
+    }
+    .container2 {
+        
+        display: flex;
+        overflow: hidden;
+        justify-content: flex-start; 
+        align-items: center;
+      
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+    .box2{
+        width: 50%; 
+        float: left; 
+   
+    }
+</style>
 <div class="image-container">
     <img src="{{ projeto.imagem.url  }}" alt="{{ projeto.TituloAcao }}">
     <div class="text-overlay">
@@ -13,16 +46,28 @@
     </div> 
 </div>
 <div style="padding:0 200px;">
-    <div>
-    
+<div class="containerduplo">
+    <div class="left">
         <h2>O que fazemos?</h2>
-        <p style="font-size:15px; color:grey;">Ultima Modificação em: {{ projeto.dtModificacao }} <br> 
-        <p>{{ projeto.descricao }}</p> 
+    </div> 
+    <div class="right">
+        <div class="button-container" >
+            {% if projeto.aceitaContribuicoes %}
+                <button type="button">Aceita contribuições</button>
+            {% endif %}
+        </div>
     </div>
 </div>
-<div style="padding:0 200px;">
-    <h3><b>Como fazer parte do projeto?</b></h3>
-    <p>Entre em contato conosco através do seguinte e-mail: {{ projeto.contato }}</p>
+    <div class="content">
+        <p class="description">{{ projeto.descricao }}</p>
+    </div>
+   
+
+
+    <h3><b>Como contribuir</b></h3>
+    <p>Contato:</p>
+    <p>{{ projeto.contato }}</p>
+    <button style="margin-top:-15px;" type="button">Propor Nova Edição</button>
     <p class="icon">
         <h3>
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512">
@@ -32,7 +77,28 @@
     </p>
     <p> Coordenadores: {{ projeto.coordenadorAcao }}</p>
     <p> Alunos: {{ projeto.alunoAcao }}</p>
-</div>
+
+    {% if edicao %}
+    <h3><b>Outras Edições:</b></h3>
+    <div class="container2">
+        {% for outra_edicao in edicao %}
+        <div class="box2">
+            <div style="text-align:center; width:400px; border: 2px solid #9bbfdc;">
+                <h3>{{ outra_edicao.numEdicao }} Edição</h3>   
+                <p style="color:#3d63fe">  
+                    {{ outra_edicao.nomeEdicao }}<br>
+                    {{ outra_edicao.coordenadorEdicao }}
+                </p> 
+            </div>
+        </div>
+        {% empty %}
+        <p>Nenhuma outra edição encontrada.</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+</div><br><br>
+
 
 <div class="footer">
     <div class="center" style="padding:10px;">

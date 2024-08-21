@@ -138,8 +138,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'liraoharak@gmail.com'
-EMAIL_HOST_PASSWORD = 'Amsterda@9481'
+EMAIL_HOST_USER = 'maisacao74@gmail.com'
+EMAIL_HOST_PASSWORD = 'ctCvF5A6hsfyj7yPk'
 
 os.environ['GDAL_LIBRARY_PATH'] = 'C:/OSGeo4W/bin'
 LOGGING = {

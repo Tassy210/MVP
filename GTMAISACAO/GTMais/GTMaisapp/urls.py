@@ -12,5 +12,6 @@ urlpatterns = [
     path('contato/', views.contato, name='contato'),
     path('projeto/<int:idAcao>/', views.projeto, name='projeto'),
     path('criarAcao/', views.criarAcao, name='criarAcao'),
+     path('criarEdicao/', views.criarEdicao, name='criarEdicao'),
     path('cidades/<int:idEstado>/', views.cidades_por_estado, name='cidades_por_estado'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

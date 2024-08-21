@@ -1,0 +1,108 @@
+{% extends "menu.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* Estilo do formulário */
+    form {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
+
+    /* Estilo dos campos do formulário */
+    form input, form select, form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    /* Estilo dos rótulos dos campos */
+    form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    /* Estilo do botão de envio */
+    form button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Estilo do botão de envio quando passa o mouse */
+    form button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<body>
+    <center><h1>Criar Ação de Extensão</h1></center>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ formEdicao.as_p }}
+      
+        <button type="submit">Salvar</button>
+    </form>
+
+    {% if formEdicao.errors %}
+    <div class="error">
+        <ul>
+            {% for field, errors in formEdicao.errors.items %}
+                {% for error in errors %}
+                    <li>{{ field }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if formEdicao.errors %}
+    <div class="error">
+        <ul>
+            {% for field, errors in formEdicao.errors.items %}
+                {% for error in errors %}
+                    <li>{{ field }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <script>
+        document.getElementById('estado').addEventListener('change', function() {
+            var idEstado = this.value;
+            var cidadeSelect = document.getElementById('cidade');
+            cidadeSelect.innerHTML = '<option value="">Selecione uma cidade</option>';
+
+            if (idEstado) {
+                fetch(`/cidades/${idEstado}/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.cidades.forEach(cidade => {
+                            var option = document.createElement('option');
+                            option.value = cidade.idCidade;
+                            option.textContent = cidade.Cidade;
+                            cidadeSelect.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao carregar cidades:', error));
+            }
+        });
+    </script>
+{% endblock %}

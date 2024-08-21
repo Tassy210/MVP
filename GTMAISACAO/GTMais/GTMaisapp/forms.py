@@ -25,8 +25,6 @@ class EnderecoForm(forms.ModelForm):
             'rua': forms.TextInput(attrs={'class': 'form-control'}),
             'bairro': forms.TextInput(attrs={'class': 'form-control'}),
         }
-from django import forms
-from .models import AcaoExtensao, Endereco, EdicaoAcao
 
 class AcaoExtensaoForm(forms.ModelForm):
     endereco_CEP = forms.CharField(label='CEP', max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -49,7 +47,8 @@ class AcaoExtensaoForm(forms.ModelForm):
             'artigo',
             'aceitaContribuicoes',      
             'idSituacao',
-        
+            'idEstado',
+            'idCidade',
         ]
         widgets = {
             'dtCriacao': forms.DateInput(attrs={'type': 'date'})
@@ -72,17 +71,23 @@ class AcaoExtensaoForm(forms.ModelForm):
 
         return acao_extensao
 
+
 class EdicaoAcaoForm(forms.ModelForm):
+    endereco_CEP = forms.CharField(label='CEP', max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    endereco_numero = forms.IntegerField(label='Número', widget=forms.NumberInput(attrs={'class': 'form-control'}))
+    endereco_complemento = forms.CharField(label='Complemento', max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    endereco_rua = forms.CharField(label='Rua', max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    endereco_bairro = forms.CharField(label='Bairro', max_length=255, widget=forms.TextInput(attrs={'class': 'form-control'}))
+
     idEstado = forms.ModelChoiceField(
         queryset=Estados.objects.all(),
-        widget=forms.Select(attrs={'id': 'estado'})
+        widget=forms.Select(attrs={'class': 'form-control', 'id': 'estado'})
     )
     idCidade = forms.ModelChoiceField(
         queryset=Cidades.objects.none(),  
-        widget=forms.Select(attrs={'id': 'cidade'})
+        widget=forms.Select(attrs={'class': 'form-control', 'id': 'cidade'})
     )
-    idAcao = forms.ModelChoiceField(queryset=AcaoExtensao.objects.all(), widget=forms.HiddenInput())
-    endereco = EnderecoForm()
+
     class Meta:
         model = EdicaoAcao
         fields = [
@@ -96,7 +101,6 @@ class EdicaoAcaoForm(forms.ModelForm):
             'idCidade',
         ]
         widgets = {
-           
             'dtModificacao': forms.DateInput(attrs={'type': 'date'}),
             'dtInicio': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
             'dtFim': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
@@ -104,28 +108,34 @@ class EdicaoAcaoForm(forms.ModelForm):
             'idCidade': forms.Select(attrs={'class': 'form-control', 'id': 'cidade'})
         }
 
-    def save(self, commit=True):
-      
-        EdicaoAcao = super().save(commit=False)
-        
-        endereco_form = self.cleaned_data.get('endereco')
-
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         if 'idEstado' in self.data:
             try:
                 estado_id = int(self.data.get('idEstado'))
                 self.fields['idCidade'].queryset = Cidades.objects.filter(UF_id=estado_id)
             except (ValueError, TypeError):
-                pass
+                self.fields['idCidade'].queryset = Cidades.objects.none()
         elif self.instance.pk:
-            self.fields['idCidade'].queryset = self.instance.UF.cidades_set.all()
+            self.fields['idCidade'].queryset = self.instance.idEstado.cidades_set.all()
 
-        if endereco_form:
-            endereco = Endereco.objects.create(**endereco_form)
-            EdicaoAcao.idEndereco = endereco
+    def save(self, commit=True):
+        edicao_acao = super().save(commit=False)
+        
+        endereco_data = {
+            'CEP': self.cleaned_data['endereco_CEP'],
+            'numero': self.cleaned_data['endereco_numero'],
+            'complemento': self.cleaned_data['endereco_complemento'],
+            'rua': self.cleaned_data['endereco_rua'],
+            'bairro': self.cleaned_data['endereco_bairro']
+        }
+        
+        endereco, created = Endereco.objects.get_or_create(**endereco_data)
+        edicao_acao.idEndereco = endereco
 
         if commit:
-            EdicaoAcao.save()
+            edicao_acao.save()
 
-        return EdicaoAcao
+        return edicao_acao
 
     

@@ -1,27 +1,17 @@
+from django import forms
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
-from .models import AcaoExtensao,TipoAcao,SituacaoAcao, Estados, Cidades
+from .models import AcaoExtensao,TipoAcao,SituacaoAcao, Estados, Cidades, EdicaoAcao
 from datetime import datetime
 from .forms import AcaoExtensaoForm, ContatoForm, EdicaoAcaoForm
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
-from .emails import enviar_email_html
+from django.contrib import messages
 def cidades_por_estado(request, idEstado):
     cidades = Cidades.objects.filter(UF=idEstado).values('idCidade', 'Cidade')
     return JsonResponse({'cidades': list(cidades)})
 
-def testar_email(request):
-    destinatarios = ['liraoharak@gmail.com']
-    assunto = 'Teste de Envio de E-mail'
-    contexto = {
-        'variavel1': 'valor1',
-        'variavel2': 'valor2',
-    }
-    
-    enviar_email_html(destinatarios, assunto, contexto)
-    
-    return HttpResponse('E-mail de teste enviado (console).')
 def criarAcao(request, pk=None):
     if pk:
         acao_extensao = get_object_or_404(AcaoExtensao, pk=pk)
@@ -31,16 +21,33 @@ def criarAcao(request, pk=None):
     if request.method == 'POST':
         form = AcaoExtensaoForm(request.POST, request.FILES, instance=acao_extensao)
         if form.is_valid():
-            acao_extensao = form.save()
-
-            messages.success(request, 'Cadastro da Ação de Extensão concluído com sucesso!')
-            return redirect('extensoes.html')  
+            try:
+                acao_extensao = form.save()
+                messages.success(request, 'Cadastro da Ação de Extensão concluído com sucesso!')
+                return redirect('extensoes')  
+            except forms.ValidationError as e:
+                messages.error(request, f'Erro: {e}')
     else:
         form = AcaoExtensaoForm(instance=acao_extensao)
-    
 
     return render(request, 'criarAcao.html', {'form': form})
 
+def criarEdicao(request, pk=None):
+    if pk:
+        edicao_acao = get_object_or_404(EdicaoAcao, pk=pk)
+    else:
+        edicao_acao = EdicaoAcao()
+
+    if request.method == 'POST':
+        formEdicao = EdicaoAcaoForm(request.POST, instance=edicao_acao)
+        if formEdicao.is_valid():
+            formEdicao.save()
+            messages.success(request, 'Edição de Ação concluída com sucesso!')
+            return redirect('extensoes')  
+    else:
+        formEdicao = EdicaoAcaoForm(instance=edicao_acao)
+
+    return render(request, 'criarEdicao.html', {'formEdicao': formEdicao})
 def index(request):
     estados = Estados.objects.all()
     return render(request, 'index.html', {'estados': estados})
@@ -70,14 +77,16 @@ def projeto(request, idAcao):
     tipos = TipoAcao.objects.all()
     situacoes = SituacaoAcao.objects.all()
     acoes = AcaoExtensao.objects.all()
+    edicao = EdicaoAcao.objects.filter(idAcao=idAcao)
+
     projeto = get_object_or_404(AcaoExtensao, idAcao=idAcao)
     return render(request, 'projeto.html',{
     'acoes': acoes,
     'tipos': tipos,
     'situacoes': situacoes,
     'projeto': projeto,
+    'edicao':edicao
     })
- 
 def extensoes(request):
     search_term = request.GET.get('search', '')
     search_situacao = request.GET.get('situacao', '')

@@ -92,7 +92,8 @@ class AcaoExtensao(models.Model):
     contato= models.CharField(max_length=255)
     aceitaContribuicoes = models.BooleanField(default=True) 
     artigo= models.CharField(max_length=255)
- 
+    idEstado= models.ForeignKey(Estados, on_delete=models.CASCADE)
+    idCidade = models.ForeignKey(Cidades, on_delete=models.CASCADE)
     def __str__(self):
         return self.TituloAcao
 
@@ -117,7 +118,9 @@ class EdicaoAcao(models.Model):
     dtInicio = models.DateTimeField(default=datetime.datetime.now)
     dtFim = models.DateTimeField(null=True, blank=True)
     idEndereco= models.ForeignKey(Endereco, on_delete=models.CASCADE)
-
+    coordenadorEdicao = models.CharField(max_length=255)
+    contato= models.CharField(max_length=255)
+    alunoEdicao = models.CharField(max_length=255)
     def __str__(self):
         return f'{self.nomeEdicao} ({self.numEdicao})'
 

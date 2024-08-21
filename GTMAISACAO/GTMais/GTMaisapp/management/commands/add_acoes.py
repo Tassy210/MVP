@@ -30,18 +30,5 @@ class Command(BaseCommand):
         Cidades_acao_instance = Cidades.objects.get(pk=28)
         situacao_acao_instance = SituacaoAcao.objects.get(pk=1)
 
-        AcaoExtensao1, created = AcaoExtensao.objects.get_or_create(
-            idAcao=1,
-            defaults={
-                'TituloAcao': 'Educação e Sustentabilidade: Construindo um Futuro Verde',
-                'coordenadorAcao': 'Completo',
-                'alunoAcao': 'Cleiton Rodrigues',
-                'descricao': 'Valdisnei W. e Juliano Julião',
-                'idTipo': tipo_acao_instance,
-                'dtCriacao': datetime(2024, 8, 13),
-              
-              
-            }
-)
 
         self.stdout.write(self.style.SUCCESS('Dados adicionados com sucesso!'))
