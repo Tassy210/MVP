@@ -1,4 +1,0 @@
-django
-django-extensions
-django-livereload
-django-icons

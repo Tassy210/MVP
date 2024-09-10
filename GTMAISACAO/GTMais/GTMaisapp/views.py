@@ -8,6 +8,9 @@ from .forms import AcaoExtensaoForm, ContatoForm, EdicaoAcaoForm
 from django.http import HttpResponse, JsonResponse
 from django.contrib import messages
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.core.paginator import Paginator
+
 def cidades_por_estado(request, idEstado):
     cidades = Cidades.objects.filter(UF=idEstado).values('idCidade', 'Cidade')
     return JsonResponse({'cidades': list(cidades)})
@@ -48,6 +51,7 @@ def criarEdicao(request, pk=None):
         formEdicao = EdicaoAcaoForm(instance=edicao_acao)
 
     return render(request, 'criarEdicao.html', {'formEdicao': formEdicao})
+
 def index(request):
     estados = Estados.objects.all()
     return render(request, 'index.html', {'estados': estados})
@@ -65,7 +69,29 @@ def contato(request):
     if request.method == 'POST':
         contato_form = ContatoForm(request.POST, prefix='contato')
         if contato_form.is_valid():
+            message = contato_form.cleaned_data['descricao']
+            email = contato_form.cleaned_data['email']
+            name = contato_form.cleaned_data['nome']
+            telefone = contato_form.cleaned_data['telefone']
+            email_message = (
+                f'Contato realizado por:\n'
+                f'Nome: {name}\n'
+                f'Telefone: {telefone}\n'
+                f'Descrição: {message}'
+            )
+            
+            # Send the email
+            send_mail(
+                'Contato Extensão GTMAIS',
+                email_message,
+                'settings.EMAIL_HOST_USER',
+                [email, 'mab.babinski@gmail.com'],
+                fail_silently=False
+            )
+
             contato_form.save()
+            messages.success(request, 'Contato registrado, espere pelo contato de um de nossos administradores!')
+            
     else:
         contato_form = ContatoForm(prefix='contato')
         messages.success(request, 'Contato registrado, espere pelo contato de um de nossos administradores!')   
@@ -88,6 +114,7 @@ def projeto(request, idAcao):
     'edicao':edicao
     })
 def extensoes(request):
+
     search_term = request.GET.get('search', '')
     search_situacao = request.GET.get('situacao', '')
     search_estado = request.GET.get('Estados', '')
@@ -128,14 +155,16 @@ def extensoes(request):
          Q(idTipo__nomeTipo__icontains=search_term) |
          Q(idSituacao__nomeSituacao__icontains=search_term))
     )
-
+    paginator = Paginator(acoes, 1)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
     if order_direction == 'desc':
         acoes = acoes.order_by('-dtCriacao')
     else:
         acoes = acoes.order_by('dtCriacao')
 
     return render(request, 'extensoes.html', {
-        'acoes': acoes,
+        "page_obj": page_obj,
         'search_term': search_term,
         'search_situacao': search_situacao,
         'search_localizacao': search_estado,

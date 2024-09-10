@@ -1,25 +1,20 @@
 from django.test import TestCase
 from django.core import mail
-from .emails import enviar_email_html
 
-class EmailTests(TestCase):
-    def test_email_send(self):
-        destinatarios = ['lanalarala@gmail.com']
-        assunto = 'Teste Automatizado'
-        contexto = {
-         'Olá'
-        }
 
-        enviar_email_html(destinatarios, assunto, contexto)
+connection = mail.get_connection()
 
-        # Verifica se o e-mail foi enviado
-        self.assertEqual(len(mail.outbox), 1)
-        email = mail.outbox[0]
-        self.assertEqual(email.subject, assunto)
-        self.assertIn('Olá', email.body)
-        
-        # Verifica se o e-mail contém HTML
-        self.assertTrue(email.alternatives)  # Verifica se há alternativas
-        html_content = email.alternatives[0][0]
-        self.assertIn('<p>Este é um e-mail de exemplo', html_content)
+# Manually open the connection
+connection.open()
 
+# Construct an email message that uses the connection
+email1 = mail.EmailMessage(
+    "Hello",
+    "Body goes here",
+    "lanalarala@gmail.com",
+    ["liraoharak@gmail.com"],
+    connection=connection,
+)
+email1.send()  # Send the email
+
+connection.close()

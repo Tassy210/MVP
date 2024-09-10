@@ -139,7 +139,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'maisacao74@gmail.com'
-EMAIL_HOST_PASSWORD = 'ctCvF5A6hsfyj7yPk'
+EMAIL_HOST_PASSWORD = 'lktphojtgnuvgwik'
 
 os.environ['GDAL_LIBRARY_PATH'] = 'C:/OSGeo4W/bin'
 LOGGING = {
